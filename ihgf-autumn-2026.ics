@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Chowringhee Arts//IHGF Autumn 2026//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:ihgf-autumn-2026@chowringheearts.com
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20261013
+DTEND;VALUE=DATE:20261018
+SUMMARY:Chowringhee Arts at IHGF Delhi Fair – Hall 3\, Stand E-06/05
+LOCATION:India Expo Centre & Mart\, Greater Noida\, Uttar Pradesh\, India
+DESCRIPTION:Visit Chowringhee Arts at the 62nd IHGF Delhi Fair (Autumn 2026)\, Hall 3\, Stand E-06/05.\nEmail: info@chowringheearts.com\nWhatsApp: +91 98309 22999
+URL:https://chowringheearts.com/#fair
+END:VEVENT
+END:VCALENDAR

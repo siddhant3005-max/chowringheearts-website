@@ -114,7 +114,7 @@ html:not(.js) .menu-btn{display:none!important}
 /* hero */
 .hero{position:relative;background:var(--navy);color:var(--on-navy);overflow:hidden;padding:clamp(110px,14vw,150px) 0 clamp(64px,8vw,110px)}
 .hero::before,.buyers::before,.site-foot::before{content:"";position:absolute;inset:0;background-image:var(--pattern);background-size:180px 180px;opacity:.07;pointer-events:none}
-.hero::after{content:"";position:absolute;right:-6%;top:6%;width:68%;height:100%;background:radial-gradient(closest-side,rgba(211,162,78,.18),rgba(211,162,78,0));pointer-events:none}
+.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(46% 56% at 73% 46%,rgba(211,162,78,.17),rgba(211,162,78,0) 100%);pointer-events:none}
 .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(24px,4vw,64px);align-items:center}
 .hero .lede{margin:24px 0 32px}
 .cta-row{display:flex;flex-wrap:wrap;gap:12px}
@@ -131,7 +131,7 @@ html:not(.js) .menu-btn{display:none!important}
 .still .p2{width:40%;left:0;bottom:4%}
 .still .p3{width:44%;right:-2%;bottom:0;transform:rotate(8deg)}
 .still .p4{width:9%;right:14%;top:2%;transform:rotate(18deg)}
-@media (max-width:900px){.hero-grid{grid-template-columns:1fr}.still{order:-1;max-width:520px;width:100%;margin:0 auto}.hero::after{width:120%;right:-10%;top:0;height:60%}}
+@media (max-width:900px){.hero-grid{grid-template-columns:1fr}.still{order:-1;max-width:520px;width:100%;margin:0 auto}.hero::after{background:radial-gradient(70% 34% at 50% 26%,rgba(211,162,78,.17),rgba(211,162,78,0) 100%)}}
 
 /* ribbon */
 .ribbon{background:linear-gradient(90deg,var(--gold-lo),var(--gold) 50%,var(--gold-lo));color:var(--navy);overflow:hidden;white-space:nowrap}

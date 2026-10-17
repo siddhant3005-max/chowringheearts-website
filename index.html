@@ -243,6 +243,30 @@ section{position:relative;padding:clamp(72px,9vw,128px) 0}
 .also li{padding:9px 15px;border-radius:999px;background:var(--card);border:1px solid var(--line);font:500 13.5px/1.2 var(--sans);color:var(--ink-deep)}
 .also .k{background:transparent;border:0;padding:9px 4px;color:var(--gold-ink);letter-spacing:.2em;text-transform:uppercase;font-size:12px;font-weight:600}
 
+/* range (what we make) */
+.range{background:var(--paper)}
+.cats{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media (max-width:900px){.cats{grid-template-columns:repeat(2,1fr);gap:12px}}
+.cats a{display:flex;flex-direction:column;height:100%;background:var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .2s ease,transform .2s ease,box-shadow .2s ease}
+.cats a:hover{border-color:var(--gold);transform:translateY(-3px);box-shadow:0 24px 40px -30px rgba(29,30,92,.55)}
+.cat-ph{position:relative;display:block;aspect-ratio:4/3;background:radial-gradient(70% 70% at 50% 50%,#fff,var(--paper) 78%)}
+.cat-ph img{position:absolute;inset:0;margin:auto;max-width:72%;max-height:72%;width:auto;height:auto;object-fit:contain;filter:drop-shadow(0 16px 16px rgba(60,40,20,.25)) drop-shadow(0 3px 4px rgba(60,40,20,.18));transition:transform .45s ease}
+.cats a:hover img{transform:translateY(-4px) scale(1.04)}
+.cats b{display:block;padding:12px 16px 0;font:500 15px/1.3 var(--sans);color:var(--ink-deep)}
+.cats small{display:block;padding:3px 16px 14px;font-size:12.5px;line-height:1.45;color:var(--muted)}
+@media (max-width:640px){.cats b{padding:10px 12px 0;font-size:14px}.cats small{padding:2px 12px 12px;font-size:12px}}
+.range-also{margin:24px 0 0;text-align:center;font-size:14.5px;color:var(--muted)}
+
+/* trade terms (good to know) */
+.terms{margin-top:clamp(40px,5vw,60px);padding-top:clamp(28px,4vw,40px);border-top:1px solid var(--line-navy)}
+.terms .eyebrow{margin-bottom:6px}
+.terms-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0 32px;margin:0}
+.terms-grid div{padding:16px 0;border-bottom:1px dashed rgba(240,213,148,.28)}
+.terms-grid dt{font:600 11.5px/1.3 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.terms-grid dd{margin:6px 0 0;color:#fff;font-size:15px;line-height:1.5}
+@media (max-width:760px){.terms-grid{grid-template-columns:1fr 1fr;gap:0 20px}}
+@media (max-width:460px){.terms-grid{grid-template-columns:1fr}}
+
 /* collection */
 .hint{display:flex;align-items:center;gap:10px;margin:-14px 0 22px;font-size:14.5px;color:var(--muted)}
 .hint .mini{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;border:1.5px solid var(--line-2);color:var(--ink);flex:none}
@@ -366,6 +390,9 @@ legend,.fld-k{font:600 12px/1.4 var(--sans);letter-spacing:.16em;text-transform:
 .linkish{background:none;border:0;padding:0;font:inherit;color:var(--ink);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
 .sent{margin-top:16px;padding:14px 16px;border-radius:14px;background:rgba(46,49,146,.06);border:1px solid var(--line);font-size:14.5px;color:var(--text)}
 .sent b{font-weight:600;color:var(--ink-deep)}
+.sent.ok{background:rgba(20,120,60,.08);border-color:rgba(20,120,60,.35)}
+.sent.ok b{color:#0F6B38}
+.btn[disabled]{opacity:.6;cursor:progress;transform:none!important}
 .enq-side{display:grid;gap:14px}
 .c-card{display:flex;flex-direction:column;gap:5px;padding:22px 24px;border-radius:22px;background:var(--card);border:1px solid var(--line);text-decoration:none;color:var(--text);transition:border-color .2s ease,transform .2s ease}
 a.c-card:hover{border-color:var(--gold);transform:translateY(-2px)}
@@ -454,6 +481,7 @@ html.lb-open{overflow:hidden}
     <a class="brand" href="./" aria-label="Chowringhee Arts home"><img src="assets/logo-gold.svg" alt="Chowringhee Arts" width="112" height="50"></a>
     <nav class="nav" aria-label="Main">
       <a class="lnk" href="#story">Why us</a>
+      <a class="lnk" href="#range">What we make</a>
       <a class="lnk" href="#collection">Collection</a>
       <a class="lnk" href="#how">How it works</a>
       <a class="lnk" href="#fair"><span class="fair-before">IHGF 2026</span><span class="fair-after">Trade fairs</span></a>
@@ -466,6 +494,7 @@ html.lb-open{overflow:hidden}
     <div class="wrap">
       <a href="#story">Why us</a>
       <a href="#materials">Materials</a>
+      <a href="#range">What we make</a>
       <a href="#collection">Collection</a>
       <a href="#how">How it works</a>
       <a href="#fair"><span class="fair-before">IHGF Delhi Fair 2026</span><span class="fair-after">Trade fairs</span></a>
@@ -576,6 +605,7 @@ html.lb-open{overflow:hidden}
         <p class="story-quote">Made by hand in India — with horn and bone that would otherwise go to waste.</p>
         <ul class="facts">
           <li>10 years in business</li>
+          <li>4,000+ designs</li>
           <li>Ex-works prices in US dollars</li>
           <li>Better prices on volume</li>
           <li>Standard lead time 30–45 days</li>
@@ -616,6 +646,30 @@ html.lb-open{overflow:hidden}
         </article>
       </div>
       <ul class="also"><li class="k">Also</li><li>Brass details</li><li>Resin &amp; terrazzo</li></ul>
+    </div>
+  </section>
+
+  <section id="range" class="range" aria-labelledby="range-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">What we make</p>
+          <h2 id="range-title">4,000+ designs, <em>nine categories.</em></h2>
+        </div>
+        <p class="lede">Serveware to small furniture, all handmade from the same natural materials. Tell us the category you buy and we'll send what fits.</p>
+      </div>
+      <ul class="cats">
+        <li><a href="#enquire"><span class="cat-ph"><img src="assets/img/cat-horn-bowl-600.webp" srcset="assets/img/cat-horn-bowl-300.webp 300w, assets/img/cat-horn-bowl-600.webp 600w" sizes="(max-width:900px) 40vw, 280px" width="600" height="467" alt="Horn bowl with inlaid shell dots" loading="lazy" decoding="async"></span><b>Horn bowls &amp; trays</b><small>Natural, two-tone, inlaid and brass-finished</small></a></li>
+        <li><a href="#enquire"><span class="cat-ph"><img src="assets/img/cat-servers-600.webp" srcset="assets/img/cat-servers-300.webp 300w, assets/img/cat-servers-600.webp 600w" sizes="(max-width:900px) 40vw, 280px" width="600" height="245" alt="Horn salad servers with bone inlay handles" loading="lazy" decoding="async"></span><b>Cutlery &amp; serveware</b><small>Spoons, forks, knives and servers in horn, shell and wood</small></a></li>
+        <li><a href="#enquire"><span class="cat-ph"><img src="assets/img/cat-bone-box-600.webp" srcset="assets/img/cat-bone-box-300.webp 300w, assets/img/cat-bone-box-600.webp 600w" sizes="(max-width:900px) 40vw, 280px" width="600" height="265" alt="Striped bone inlay box" loading="lazy" decoding="async"></span><b>Bone inlay boxes &amp; trays</b><small>Floral, geometric and striped patterns</small></a></li>
+        <li><a href="#enquire"><span class="cat-ph"><img src="assets/img/cat-shell-sp-600.webp" srcset="assets/img/cat-shell-sp-300.webp 300w, assets/img/cat-shell-sp-600.webp 600w" sizes="(max-width:900px) 40vw, 280px" width="600" height="368" alt="Heart-shaped mother-of-pearl salt and pepper set" loading="lazy" decoding="async"></span><b>Shell &amp; mother-of-pearl</b><small>Dishes, trays, pill boxes, salt &amp; pepper sets</small></a></li>
+        <li><a href="#enquire"><span class="cat-ph"><img src="assets/img/cat-resin-box-600.webp" srcset="assets/img/cat-resin-box-300.webp 300w, assets/img/cat-resin-box-600.webp 600w" sizes="(max-width:900px) 40vw, 280px" width="600" height="461" alt="Checkerboard resin and bone boxes" loading="lazy" decoding="async"></span><b>Resin &amp; terrazzo</b><small>Faux horn, terrazzo and coloured resin</small></a></li>
+        <li><a href="#enquire"><span class="cat-ph"><img src="assets/img/cat-magnifier-600.webp" srcset="assets/img/cat-magnifier-300.webp 300w, assets/img/cat-magnifier-600.webp 600w" sizes="(max-width:900px) 40vw, 280px" width="600" height="248" alt="Magnifying glass with a shell and filigree handle" loading="lazy" decoding="async"></span><b>Magnifiers &amp; desk pieces</b><small>Shell and horn handles, pen holders, paperweights</small></a></li>
+        <li><a href="#enquire"><span class="cat-ph"><img src="assets/img/cat-napkin-ring-600.webp" srcset="assets/img/cat-napkin-ring-300.webp 300w, assets/img/cat-napkin-ring-600.webp 600w" sizes="(max-width:900px) 40vw, 280px" width="600" height="327" alt="Shell napkin ring with a rope loop" loading="lazy" decoding="async"></span><b>Napkin rings &amp; table accessories</b><small>Shell, horn and bone — also key rings and small boxes</small></a></li>
+        <li><a href="#enquire"><span class="cat-ph"><img src="assets/img/cat-comb-600.webp" srcset="assets/img/cat-comb-300.webp 300w, assets/img/cat-comb-600.webp 600w" sizes="(max-width:900px) 40vw, 280px" width="351" height="357" alt="Heart-shaped horn comb" loading="lazy" decoding="async"></span><b>Combs &amp; hair accessories</b><small>Horn, bone and brass</small></a></li>
+        <li><a href="#enquire"><span class="cat-ph"><img src="assets/img/cat-stool-600.webp" srcset="assets/img/cat-stool-300.webp 300w, assets/img/cat-stool-600.webp 600w" sizes="(max-width:900px) 40vw, 280px" width="282" height="444" alt="Round stool with a mother-of-pearl top" loading="lazy" decoding="async"></span><b>Stools &amp; small furniture</b><small>Bone, shell, horn and marble tops — made to order</small></a></li>
+      </ul>
+      <p class="range-also">Also incense holders, glass boxes, wooden pieces and brass accents — ask us.</p>
     </div>
   </section>
 
@@ -671,6 +725,17 @@ html.lb-open{overflow:hidden}
         <li class="step fair-before"><span class="n">4</span><h3>Meet us at IHGF</h3><p>See the pieces in person: 13–17 Oct 2026, Hall 3, Stand E-06/05, India Expo Centre &amp; Mart.</p></li>
         <li class="step fair-after"><span class="n">4</span><h3>Meet us at a fair</h3><p>We exhibit at IHGF Delhi Fair. Ask us about the next edition.</p></li>
       </ol>
+      <div class="terms">
+        <p class="eyebrow">Good to know</p>
+        <dl class="terms-grid">
+          <div><dt>Prices</dt><dd>Ex-works Kolkata, quoted in US dollars</dd></div>
+          <div><dt>Payment</dt><dd>50% advance, balance before dispatch</dd></div>
+          <div><dt>Lead time</dt><dd>Ready 30–45 days after the advance</dd></div>
+          <div><dt>Volume</dt><dd>Better prices from 100 and from 300 pieces per design</dd></div>
+          <div><dt>Samples</dt><dd>Available on request, charged at piece price</dd></div>
+          <div><dt>Custom work</dt><dd>Sizes, colours and finishes to your specification</dd></div>
+        </dl>
+      </div>
     </div>
   </section>
 
@@ -730,7 +795,8 @@ html.lb-open{overflow:hidden}
         <p class="lede">Tell us what you need. We reply with photos and ex-works prices for the pieces that fit.</p>
       </div>
       <div class="enq-grid">
-        <form class="enq-card" id="enq-form" novalidate>
+        <form class="enq-card" id="enq-form" novalidate data-w3key="">
+          <input type="checkbox" name="botcheck" class="sr" tabindex="-1" aria-hidden="true" autocomplete="off">
           <noscript><p class="form-err">This form needs JavaScript. Please email us at info@chowringheearts.com or WhatsApp +91 98309 22999.</p></noscript>
           <fieldset class="js-only">
             <legend>I'd like</legend>
@@ -775,11 +841,14 @@ html.lb-open{overflow:hidden}
           <label class="fld"><span>Message</span><textarea name="message" rows="4" placeholder="Your store or market, target price, timing…"></textarea></label>
           <p class="form-err" id="form-err" role="alert" hidden>Please add your name, company and country.</p>
           <div class="send-row">
-            <button class="btn btn-gold" type="button" data-via="email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4 7 8 6 8-6"/></svg>Send by email</button>
+            <button class="btn btn-gold" type="button" data-via="email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4 7 8 6 8-6"/></svg><span class="js-send-label">Send by email</span></button>
             <button class="btn btn-line js-only" type="button" data-via="whatsapp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 12a8 8 0 0 1-11.7 7.1L4 20l1-4.1A8 8 0 1 1 20 12Z"/><path d="M9 10.5h6M9 13.5h4"/></svg>Send on WhatsApp</button>
           </div>
-          <p class="send-alt js-only">No email app on this device? <button type="button" class="linkish" data-via="gmail">Open in Gmail</button> or <button type="button" class="linkish" data-via="copy">copy the message</button>.</p>
+          <p class="send-alt js-only" id="send-alt-email">No email app on this device? <button type="button" class="linkish" data-via="gmail">Open in Gmail</button> or <button type="button" class="linkish" data-via="copy">copy the message</button>.</p>
+          <p class="send-alt" id="send-alt-direct" hidden>Goes straight to our inbox — no email app needed. We reply within one working day.</p>
           <div class="sent" id="sent" role="status" hidden><b>Almost done.</b> Your email app should now be open with the message written — just press send. If nothing opened, use Gmail or copy the message.</div>
+          <div class="sent ok" id="sent-ok" role="status" hidden><b>Thank you — your enquiry is with us.</b> We'll reply within one working day with photos and prices for the pieces that fit.</div>
+          <div class="sent" id="sent-fail" role="status" hidden><b>That didn't go through.</b> Please try again, or email us at info@chowringheearts.com or WhatsApp +91 98309 22999.</div>
         </form>
         <aside class="enq-side" aria-label="Contact details">
           <a class="c-card" href="mailto:info@chowringheearts.com?subject=Enquiry%20from%20chowringheearts.com"><span class="k">Email</span><span class="v">info@chowringheearts.com</span><span class="s">Enquiries and orders</span></a>
@@ -825,6 +894,7 @@ html.lb-open{overflow:hidden}
         <ul>
           <li><a href="#story">Why us</a></li>
           <li><a href="#materials">Materials</a></li>
+          <li><a href="#range">What we make</a></li>
           <li><a href="#collection">Collection</a></li>
           <li><a href="#how">How it works</a></li>
           <li><a href="#enquire">Contact</a></li>
@@ -1060,9 +1130,32 @@ html.lb-open{overflow:hidden}
     }
     if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(t).then(ok, fallback); else fallback();
   }
+  /* direct send: when a Web3Forms access key is set on the form, enquiries post straight to the inbox; otherwise the email app is used */
+  var W3KEY = (form.getAttribute('data-w3key') || '').trim(), sentOk = $('#sent-ok'), sentFail = $('#sent-fail');
+  if (W3KEY) {
+    $('.js-send-label', form).textContent = 'Send enquiry';
+    $('#send-alt-email').hidden = true; $('#send-alt-direct').hidden = false;
+  }
+  function sendDirect(m){
+    var btn = $('[data-via=email]', form), label = $('.js-send-label', btn);
+    if (btn.disabled) return;
+    btn.disabled = true; label.textContent = 'Sending…'; sentFail.hidden = true;
+    var payload = {access_key: W3KEY, subject: m.subject, from_name: v('name') + ' (' + v('company') + ')', message: m.body,
+                   name: v('name'), company: v('company'), country: v('country'), phone: v('phone'),
+                   botcheck: form.elements.botcheck && form.elements.botcheck.checked ? 'on' : ''};
+    if (v('email')) payload.email = v('email');
+    fetch('https://api.web3forms.com/submit', {method: 'POST', headers: {'Content-Type': 'application/json', 'Accept': 'application/json'}, body: JSON.stringify(payload)})
+      .then(function(r){ return r.json(); })
+      .then(function(j){
+        if (!j || !j.success) throw new Error('rejected');
+        label.textContent = 'Sent ✓'; sentOk.hidden = false; sentOk.scrollIntoView({block: 'nearest', behavior: reduce ? 'auto' : 'smooth'});
+      })
+      .catch(function(){ btn.disabled = false; label.textContent = 'Send enquiry'; sentFail.hidden = false; });
+  }
   function send(via){
     if (!check()) return;
     var m = compose();
+    if (via === 'email' && W3KEY && window.fetch) { sendDirect(m); return; }
     if (via === 'email') { window.location.href = 'mailto:' + EMAIL + '?subject=' + E(m.subject) + '&body=' + E(m.body); sent.hidden = false; }
     else if (via === 'whatsapp') window.open('https://wa.me/' + WA + '?text=' + E(m.body), '_blank', 'noopener');
     else if (via === 'gmail') window.open('https://mail.google.com/mail/?view=cm&fs=1&to=' + E(EMAIL) + '&su=' + E(m.subject) + '&body=' + E(m.body), '_blank', 'noopener');

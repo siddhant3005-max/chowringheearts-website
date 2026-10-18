@@ -20,7 +20,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Chowringhee Arts: a buffalo horn bowl, a bone inlay tray and a mother-of-pearl bird dish">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="preload" as="image" href="assets/img/bone-inlay-tray-stars-600.webp" imagesrcset="assets/img/bone-inlay-tray-stars-300.webp 300w, assets/img/bone-inlay-tray-stars-600.webp 600w, assets/img/bone-inlay-tray-stars-1200.webp 1200w" imagesizes="(max-width:900px) 70vw, 400px" fetchpriority="high">
+<link rel="preload" as="image" href="assets/img/stand-shelves-1080.webp" imagesrcset="assets/img/stand-shelves-720.webp 720w, assets/img/stand-shelves-1080.webp 1080w, assets/img/stand-shelves-1440.webp 1440w" imagesizes="100vw" fetchpriority="high">
 <link rel="preload" href="assets/fonts/cormorant-garamond-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/cormorant-garamond-latin-500-italic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/poppins-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
@@ -126,34 +126,40 @@ html{scroll-padding-top:calc(var(--head) - 6px);scroll-padding-bottom:96px}
 @media (min-width:901px){.menu{display:none!important}}
 html:not(.js) .menu-btn{display:none!important}
 
-/* hero */
-.hero{position:relative;background:var(--navy);color:var(--on-navy);overflow:hidden;padding:clamp(110px,14vw,150px) 0 clamp(64px,8vw,110px)}
-.hero::before,.buyers::before,.site-foot::before{content:"";position:absolute;inset:0;background-image:var(--pattern);background-size:180px 180px;opacity:.045;pointer-events:none}
-.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(46% 56% at 73% 46%,rgba(211,162,78,.17),rgba(211,162,78,0) 100%);pointer-events:none}
-.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(24px,4vw,64px);align-items:center}
-.hero .lede{margin:24px 0 32px}
+/* hero: one full-bleed photo behind the headline */
+.hero{position:relative;display:flex;flex-direction:column;justify-content:center;min-height:min(92vh,880px);background:var(--navy);color:var(--on-navy);overflow:hidden;padding:clamp(120px,15vw,170px) 0 clamp(110px,12vw,150px)}
+.buyers::before,.site-foot::before{content:"";position:absolute;inset:0;background-image:var(--pattern);background-size:180px 180px;opacity:.045;pointer-events:none}
+.hero-ph{position:absolute;inset:0;overflow:hidden;background:var(--navy)}
+.hero-ph img{width:100%;height:100%;object-fit:cover;object-position:62% 42%;filter:brightness(.78) contrast(1.05) saturate(.9);transform-origin:58% 45%;animation:hero-zoom 28s ease-out both}
+@keyframes hero-zoom{from{transform:scale(1)}to{transform:scale(1.07)}}
+.hero-veil{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(20,24,63,.97) 0%,rgba(20,24,63,.88) 34%,rgba(20,24,63,.38) 66%,rgba(20,24,63,.18) 100%),linear-gradient(0deg,rgba(20,24,63,.92) 0%,rgba(20,24,63,0) 44%),linear-gradient(180deg,rgba(20,24,63,.55) 0%,rgba(20,24,63,0) 30%)}
+.hero-grid{position:relative;z-index:1;width:100%;display:grid;grid-template-columns:minmax(0,640px) 1fr;gap:clamp(24px,4vw,64px);align-items:center}
+.hero h1{max-width:9.5em;text-shadow:0 2px 24px rgba(0,0,0,.25)}
+.hero .lede{margin:24px 0 32px;color:var(--on-navy);max-width:30em}
 .hero-eyebrow span{white-space:nowrap}
 .cta-row{display:flex;flex-wrap:wrap;gap:12px}
+.hero-foot{position:absolute;left:0;right:0;bottom:0;z-index:1;padding-bottom:clamp(22px,3vw,34px)}
+.hero-foot .wrap{display:flex;align-items:flex-end;justify-content:space-between;gap:18px 36px;flex-wrap:wrap}
+.hero-proof{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:14px 30px}
+.hero-proof li{padding-left:12px;border-left:2px solid var(--gold);font:500 13.5px/1.3 var(--sans);color:#fff}
+.hero-proof li small{display:block;margin-top:3px;font:400 11px/1.2 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--on-navy-muted)}
+.hero-cap{margin:0;padding:9px 14px;border-radius:999px;background:rgba(20,24,63,.55);border:1px solid var(--line-navy);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);font:400 12.5px/1.3 var(--sans);color:var(--on-navy-muted);white-space:nowrap}
+@media (max-width:900px){
+  .hero{min-height:100svh;justify-content:flex-end;padding:calc(var(--head) + 40vh) 0 150px}
+  .hero-ph img{object-position:50% 22%}
+  .hero-veil{background:linear-gradient(180deg,rgba(20,24,63,.62) 0%,rgba(20,24,63,.35) 24%,rgba(20,24,63,.86) 46%,rgba(20,24,63,.98) 70%)}
+  .hero-grid{grid-template-columns:1fr}
+  .hero .lede{margin:18px 0 26px}
+  .hero-proof{display:grid;grid-template-columns:1fr 1fr;gap:12px 16px}
+  .hero-cap{display:none}
+}
+@media (max-width:420px){.hero{padding-bottom:140px}.hero-proof li{font-size:13px}}
 .fair-pill{display:inline-flex;flex-wrap:wrap;align-items:center;gap:6px 10px;margin-top:30px;padding:9px 18px 9px 10px;border-radius:24px;background:rgba(255,255,255,.06);border:1px solid var(--line-navy);font:500 13px/1.3 var(--sans);color:var(--on-navy);text-decoration:none}
 .fair-pill b{display:inline-grid;place-items:center;height:26px;padding:0 10px;border-radius:999px;background:linear-gradient(135deg,var(--gold-lo),var(--gold-hi));color:var(--navy);font-weight:600;font-size:12px;letter-spacing:.06em}
 .fair-pill .count{color:var(--gold-hi)}
 .fair-pill .sep{opacity:.5}
 @media (max-width:520px){.fair-pill .sep{display:none}.fair-pill .count{flex-basis:100%;padding-left:4px}}
 .fair-pill:hover{border-color:var(--gold)}
-.showcase{position:relative;width:100%;max-width:520px;aspect-ratio:1/1.08;margin-left:auto}
-.showcase .arch,.slide{position:absolute;left:7%;right:7%;top:2%;bottom:12%}
-.showcase .arch{border-radius:999px 999px 26px 26px;background:linear-gradient(180deg,rgba(240,213,148,.15),rgba(240,213,148,.05) 64%,rgba(240,213,148,.02));border:1px solid rgba(240,213,148,.3);overflow:hidden}
-.showcase .shelf{position:absolute;left:0;right:0;bottom:0;height:23%;background:linear-gradient(180deg,rgba(240,213,148,.13),rgba(240,213,148,.03));border-top:1px solid rgba(240,213,148,.36)}
-.slide{margin:0;opacity:0;animation:slide-cycle 15s infinite}
-.slide img{position:absolute;left:50%;bottom:16%;transform:translateX(-50%);max-width:80%;max-height:54%;width:auto;height:auto;object-fit:contain;filter:drop-shadow(0 26px 24px rgba(0,0,0,.5)) drop-shadow(0 5px 6px rgba(0,0,0,.3))}
-.slide figcaption{position:absolute;left:0;right:0;bottom:-10.5%;text-align:center;font:600 12px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--gold-hi)}
-.s1{animation-delay:-.75s}.s2{animation-delay:4.25s}.s3{animation-delay:9.25s}
-@keyframes slide-cycle{0%{opacity:0;transform:translateY(10px)}5%{opacity:1;transform:none}31%{opacity:1;transform:none}36%{opacity:0;transform:translateY(-6px)}100%{opacity:0}}
-.dots{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:center;gap:9px}
-.dots i{width:7px;height:7px;border-radius:50%;background:rgba(240,213,148,.28);animation:dot-cycle 15s infinite}
-.dots i:nth-child(1){animation-delay:-.75s}.dots i:nth-child(2){animation-delay:4.25s}.dots i:nth-child(3){animation-delay:9.25s}
-@keyframes dot-cycle{0%,36%,100%{background:rgba(240,213,148,.28)}5%,31%{background:#F0D594}}
-@media (max-width:900px){.hero-grid{grid-template-columns:1fr}.showcase{order:-1;max-width:340px;aspect-ratio:1/1;margin:0 auto}.hero::after{background:radial-gradient(70% 34% at 50% 26%,rgba(211,162,78,.17),rgba(211,162,78,0) 100%)}}
 
 /* ribbon */
 .ribbon{background:linear-gradient(90deg,var(--gold-lo),var(--gold) 50%,var(--gold-lo));color:var(--navy);overflow:hidden;white-space:nowrap}
@@ -271,11 +277,23 @@ section{position:relative;padding:clamp(72px,9vw,128px) 0}
 .hint{display:flex;align-items:center;gap:10px;margin:-14px 0 22px;font-size:14.5px;color:var(--muted)}
 .hint .mini{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;border:1.5px solid var(--line-2);color:var(--ink);flex:none}
 .hint .mini svg{width:14px;height:14px}
-.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-@media (max-width:980px){.gallery{grid-template-columns:repeat(3,1fr)}}
-@media (max-width:640px){.gallery{grid-template-columns:repeat(2,1fr);gap:12px}.js .gallery:not(.all) .tile:nth-child(n+9){display:none}.tile figcaption{padding:10px 12px 12px}.tile .t{font-size:13px}.pick{top:8px;right:8px;width:40px;height:40px}}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px;padding:0;list-style:none}
+.filters button{min-height:40px;padding:0 16px;border-radius:999px;border:1.5px solid var(--line-2);background:var(--card);color:var(--ink);font:500 13.5px/1 var(--sans);cursor:pointer;transition:background .15s ease,border-color .15s ease,color .15s ease}
+.filters button:hover{border-color:var(--ink)}
+.filters button[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:#fff}
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-flow:dense;gap:16px}
+.tile.big{grid-column:span 2;grid-row:span 2}
+.tile.wide{grid-column:span 2}
+.tile.big .ph,.tile.wide .ph{aspect-ratio:auto;min-height:0}
+.tile.big .ph img{max-width:84%;max-height:84%}
+.tile.wide .ph img{max-width:86%;max-height:78%}
+.tile.big figcaption .t{font-size:17px}
+.tag{position:absolute;top:14px;left:14px;z-index:2;padding:7px 12px;border-radius:999px;background:var(--navy);color:var(--gold-hi);font:600 11px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;pointer-events:none}
+@media (max-width:980px){.gallery{grid-template-columns:repeat(3,1fr)}.tile.big{grid-column:span 3;grid-row:span 2}.tile.wide{grid-column:span 1}.tile.wide .ph{aspect-ratio:1/1}}
+@media (max-width:640px){.gallery{grid-template-columns:repeat(2,1fr);gap:12px}.tile.big{grid-column:span 2;grid-row:span 1}.tile.big .ph{aspect-ratio:16/9}.tile.big .ph img{max-width:76%;max-height:76%}.js .gallery:not(.all):not(.filtered) .tile:nth-child(n+10){display:none}.tile figcaption{padding:10px 12px 12px}.tile .t{font-size:13px}.tile.big figcaption .t{font-size:15px}.pick{top:8px;right:8px;width:40px;height:40px}.tag{top:10px;left:10px}}
 .tile{position:relative;margin:0;background:var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;transition:border-color .2s ease,box-shadow .2s ease}
 .tile.on{border-color:var(--gold);box-shadow:0 0 0 2px rgba(211,162,78,.4)}
+.tile[hidden]{display:none!important}
 .tile .ph{all:unset;box-sizing:border-box;position:relative;display:block;aspect-ratio:1/1;flex:1 0 auto;background:radial-gradient(70% 70% at 50% 50%,#fff,var(--paper) 75%);cursor:zoom-in}
 .tile .ph:focus-visible{outline:3px solid var(--gold);outline-offset:-3px;border-radius:22px 22px 0 0}
 .tile img{position:absolute;inset:0;margin:auto;max-width:78%;max-height:78%;width:auto;height:auto;object-fit:contain;filter:drop-shadow(0 16px 16px rgba(60,40,20,.25)) drop-shadow(0 3px 4px rgba(60,40,20,.18));transition:transform .45s ease}
@@ -292,7 +310,7 @@ section{position:relative;padding:clamp(72px,9vw,128px) 0}
 .tile.on .pick .i-plus{opacity:0;transform:scale(.6)}
 .tile.on .pick .i-check{opacity:1;transform:none}
 .more-btn{display:none;margin:18px auto 0}
-@media (max-width:640px){.js .more-btn{display:flex}}
+@media (max-width:640px){.js .more-btn{display:flex}.gallery.filtered+.more-btn{display:none!important}}
 .gal-note{display:flex;align-items:center;justify-content:space-between;gap:16px 24px;flex-wrap:wrap;margin-top:28px;padding:20px 22px;border-radius:20px;border:1px dashed rgba(185,138,62,.6);background:rgba(255,252,246,.7)}
 .gal-note p{margin:0;color:var(--muted);max-width:44em}
 .gal-note b{color:var(--ink-deep);font-weight:500}
@@ -309,40 +327,20 @@ section{position:relative;padding:clamp(72px,9vw,128px) 0}
 .step h3{margin:16px 0 8px;color:#fff;font-size:26px}
 .step p{margin:0;color:var(--on-navy-muted);font-size:15px}
 
-/* fair */
-.ticket{position:relative;display:grid;grid-template-columns:1.1fr auto 1fr;border-radius:28px;background:var(--ink);color:#fff;overflow:hidden;box-shadow:0 30px 60px -30px rgba(29,30,92,.6)}
-.ticket::before{content:"";position:absolute;inset:0;background:radial-gradient(80% 120% at 0% 0%,rgba(240,213,148,.2),transparent 55%);pointer-events:none}
-.t-left,.t-mid,.t-right{padding:clamp(24px,3.4vw,40px);position:relative}
-.t-left .eyebrow{color:var(--gold-hi)}
-.t-left h2{color:#fff;font-size:clamp(32px,3.2vw,44px)}
-.t-left p{color:rgba(255,255,255,.82);margin:14px 0 0;font-size:15px}
-.t-mid{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;border-left:2px dashed rgba(240,213,148,.45);border-right:2px dashed rgba(240,213,148,.45);min-width:190px}
-.t-mid .hall{font:500 13px/1 var(--sans);letter-spacing:.26em;text-transform:uppercase;color:var(--gold-hi)}
-.t-mid .big{font:600 clamp(58px,6.4vw,86px)/.95 var(--serif);font-variant-numeric:lining-nums;font-feature-settings:"lnum" 1;color:#fff;margin:6px 0 10px}
-.t-mid .stand{font:600 clamp(18px,2vw,23px)/1.2 var(--sans);letter-spacing:.04em;color:var(--gold-hi)}
-.nt{position:absolute;width:30px;height:30px;border-radius:50%;background:var(--paper)}
-.nt.tl{left:-16px;top:-15px}.nt.bl{left:-16px;bottom:-15px}.nt.tr{right:-16px;top:-15px}.nt.br{right:-16px;bottom:-15px}
-.t-right{display:flex;flex-direction:column;justify-content:center;gap:8px}
-.count-chip{display:inline-flex;align-items:center;gap:9px;align-self:flex-start;margin:0 0 4px;padding:7px 13px;border-radius:999px;background:rgba(240,213,148,.16);color:var(--gold-hi);font:600 12.5px/1 var(--sans);letter-spacing:.04em}
-.count-chip::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--gold-hi);box-shadow:0 0 0 4px rgba(240,213,148,.2)}
-.is-during .count-chip::before{background:#7BD88F;box-shadow:0 0 0 4px rgba(123,216,143,.22)}
-.t-right .when{font:500 19px/1.35 var(--sans);color:#fff}
-.t-right .where{font-size:14.5px;color:rgba(255,255,255,.8);margin-bottom:10px}
-.t-actions{display:flex;flex-wrap:wrap;gap:10px}
-.t-actions .btn{min-height:44px;font-size:14px;padding:0 18px}
-@media (max-width:860px){.ticket{grid-template-columns:1fr}.t-mid{border:0;border-top:2px dashed rgba(240,213,148,.45);border-bottom:2px dashed rgba(240,213,148,.45);flex-direction:row;gap:18px;justify-content:flex-start;text-align:left}.t-mid .big{margin:0}.nt{display:none}}
-.fair-row{display:grid;grid-template-columns:1.3fr .7fr;gap:22px;margin-top:22px}
+/* fair: thank-you, photos from the stand, where we've been */
+.fair-sec{background:var(--paper-2)}
+.fair-gallery{display:grid;grid-template-columns:1.45fr 1fr;gap:16px}
 .stand-photo{margin:0;border-radius:28px;overflow:hidden;position:relative;background:var(--navy);aspect-ratio:16/10}
 .stand-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 18%}
-.past-card{display:flex;flex-direction:column;border-radius:28px;background:var(--card);border:1px solid var(--line);padding:28px 26px}
-.past-card h3{font-size:26px;margin-bottom:16px}
-.past-list{list-style:none;margin:0 0 22px;padding:0;display:grid;gap:14px}
-.past-list li{color:var(--muted);font-size:15px;line-height:1.45;padding-left:18px;position:relative}
-.past-list li::before{content:"";position:absolute;left:0;top:.55em;width:8px;height:8px;border-radius:50%;border:1.5px solid var(--gold-lo)}
-.past-list li.now::before{background:var(--gold);border-color:var(--gold)}
+.stand-photo.tall{aspect-ratio:auto;min-height:260px}
+.stand-photo.tall img{object-position:50% 40%}
+.fair-foot{display:flex;align-items:center;justify-content:space-between;gap:18px 40px;flex-wrap:wrap;margin-top:clamp(28px,4vw,40px);padding-top:clamp(22px,3vw,30px);border-top:1px solid var(--line-2)}
+.past-list{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:12px 36px}
+.past-list li{position:relative;padding-left:20px;font-size:15px;line-height:1.4;color:var(--muted)}
+.past-list li::before{content:"";position:absolute;left:0;top:.5em;width:10px;height:10px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 3px rgba(211,162,78,.22)}
+.past-list li.next::before{background:transparent;border:2px solid var(--gold);box-shadow:none;box-sizing:border-box}
 .past-list b{display:block;color:var(--ink-deep);font-weight:500}
-.past-card .btn{margin-top:auto;align-self:flex-start}
-@media (max-width:900px){.fair-row{grid-template-columns:1fr}.stand-photo{aspect-ratio:4/3}}
+@media (max-width:900px){.fair-gallery{grid-template-columns:1fr}.stand-photo{aspect-ratio:4/3}.stand-photo.tall{aspect-ratio:16/10}.fair-foot{align-items:flex-start;flex-direction:column}}
 
 /* enquire */
 .enquire{padding-top:clamp(40px,5vw,72px)}
@@ -463,7 +461,7 @@ html.lb-open{overflow:hidden}
   html{scroll-behavior:auto}
   *,*::before,*::after{transition:none!important}
   .ribbon .track{animation:none}
-  .slide{animation:none}.s1{opacity:1}.dots{display:none}
+  .hero-ph img{animation:none}
   .logo-draw path{animation:none!important;fill-opacity:1!important;stroke-width:0!important;stroke-dashoffset:0!important}
 }
 /* logo drawing (inserted from assets/logo-draw.svg) */
@@ -505,23 +503,28 @@ html.lb-open{overflow:hidden}
 
 <main id="main">
   <section class="hero on-navy" aria-labelledby="hero-title">
+    <div class="hero-ph" aria-hidden="true"><img src="assets/img/stand-shelves-1080.webp" srcset="assets/img/stand-shelves-720.webp 720w, assets/img/stand-shelves-1080.webp 1080w, assets/img/stand-shelves-1440.webp 1440w" sizes="100vw" width="1440" height="1192" alt="" loading="eager" fetchpriority="high" decoding="async"></div>
+    <div class="hero-veil" aria-hidden="true"></div>
     <div class="wrap hero-grid">
       <div>
         <p class="eyebrow hero-eyebrow"><span>Buffalo horn</span> · <span>Bone inlay</span> · <span>Mother-of-pearl</span></p>
         <h1 id="hero-title">Handmade in India, <em>for trade.</em></h1>
-        <p class="lede">Home décor, gifting and serveware, made by hand by our karigars for importers and stores abroad. Our horn and bone are by-products of cattle farming — no animal is harmed for our products.</p>
+        <p class="lede">Home décor, gifting and serveware, made by hand by our karigars in Kolkata for importers and stores abroad. Our horn and bone are by-products of cattle farming — no animal is harmed for our products.</p>
         <div class="cta-row">
           <a class="btn btn-gold" href="#enquire"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4 7 8 6 8-6"/></svg>Send an enquiry</a>
           <a class="btn btn-line" href="https://wa.me/919830922999?text=Hello%20Chowringhee%20Arts%2C%20I%20found%20you%20on%20your%20website." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 12a8 8 0 0 1-11.7 7.1L4 20l1-4.1A8 8 0 1 1 20 12Z"/><path d="M9 10.5h6M9 13.5h4"/></svg>WhatsApp us</a>
         </div>
-        <a class="fair-pill fair-before" href="#fair"><b>IHGF</b><span>Hall 3 · Stand E-06/05</span><span class="sep" aria-hidden="true">·</span><span class="count js-count">13–17 Oct 2026</span></a>
       </div>
-      <div class="showcase" aria-hidden="true">
-        <div class="arch"><span class="shelf"></span></div>
-        <figure class="slide s1"><img class="p1" src="assets/img/bone-inlay-tray-stars-600.webp" srcset="assets/img/bone-inlay-tray-stars-300.webp 300w, assets/img/bone-inlay-tray-stars-600.webp 600w, assets/img/bone-inlay-tray-stars-1200.webp 1200w" sizes="(max-width:900px) 70vw, 400px" width="1200" height="688" alt="" loading="eager" fetchpriority="high"><figcaption>Bone inlay</figcaption></figure>
-        <figure class="slide s2"><img class="p2" src="assets/img/horn-bowl-amber-600.webp" srcset="assets/img/horn-bowl-amber-300.webp 300w, assets/img/horn-bowl-amber-600.webp 600w, assets/img/horn-bowl-amber-1200.webp 1200w" sizes="(max-width:900px) 60vw, 340px" width="1200" height="869" alt="" loading="eager"><figcaption>Buffalo horn</figcaption></figure>
-        <figure class="slide s3"><img class="p3" src="assets/img/mop-bird-platter-600.webp" srcset="assets/img/mop-bird-platter-300.webp 300w, assets/img/mop-bird-platter-600.webp 600w, assets/img/mop-bird-platter-1200.webp 1200w" sizes="(max-width:900px) 70vw, 400px" width="1200" height="643" alt="" loading="eager"><figcaption>Mother-of-pearl</figcaption></figure>
-        <div class="dots"><i></i><i></i><i></i></div>
+    </div>
+    <div class="hero-foot">
+      <div class="wrap">
+        <ul class="hero-proof">
+          <li>10 years<small>in business</small></li>
+          <li>4,000+ designs<small>nine categories</small></li>
+          <li>Ex-works, US dollars<small>50% advance · 30–45 days</small></li>
+          <li>IHGF Delhi Fair<small>regular exhibitor</small></li>
+        </ul>
+        <p class="hero-cap">Our karigars' work on our stand at IHGF Delhi Fair</p>
       </div>
     </div>
   </section>
@@ -682,24 +685,25 @@ html.lb-open{overflow:hidden}
         </div>
         <p class="lede">A small selection from our range. Ask us for sizes and ex-works prices on anything you like.</p>
       </div>
-      <p class="hint js-only"><span class="mini"><svg class="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></span>Tap the plus on any piece to add it to your shortlist, then send the list with your enquiry.</p>
+      <p class="hint js-only"><span class="mini"><svg class="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></span>Tap a material to filter. Tap the plus on any piece to add it to your shortlist, then send the list with your enquiry.</p>
+      <ul class="filters js-only" aria-label="Filter by material"><li><button type="button" data-mat="" aria-pressed="true">All pieces</button></li><li><button type="button" data-mat="Buffalo horn" aria-pressed="false">Horn</button></li><li><button type="button" data-mat="Bone inlay" aria-pressed="false">Bone inlay</button></li><li><button type="button" data-mat="Mother-of-pearl" aria-pressed="false">Mother-of-pearl</button></li></ul>
       <div class="gallery" id="gallery">
+        <figure class="tile big" data-id="horn-bowls-trio" data-title="Horn bowls — three finishes" data-sub="Natural, dotted and brass-striped" data-mat="Buffalo horn"><span class="tag">Signature</span><button class="ph" type="button" aria-label="View larger: Horn bowls — three finishes — Natural, dotted and brass-striped"><img src="assets/img/horn-bowls-trio-600.webp" srcset="assets/img/horn-bowls-trio-300.webp 300w, assets/img/horn-bowls-trio-600.webp 600w, assets/img/horn-bowls-trio-1200.webp 1200w" sizes="(max-width:980px) 92vw, 580px" width="1188" height="715" alt="Horn bowls — three finishes — Natural, dotted and brass-striped" loading="lazy" decoding="async"></button><button class="pick" type="button" aria-pressed="false" aria-label="Add to shortlist: Horn bowls — three finishes — Natural, dotted and brass-striped"><svg class="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg><svg class="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></button><figcaption><span class="t">Horn bowls — three finishes<small>Natural, dotted and brass-striped</small></span></figcaption></figure>
         <figure class="tile" data-id="bone-inlay-tray-stars" data-title="Bone inlay tray" data-sub="Black and white pattern" data-mat="Bone inlay"><button class="ph" type="button" aria-label="View larger: Bone inlay tray — Black and white pattern"><img src="assets/img/bone-inlay-tray-stars-600.webp" srcset="assets/img/bone-inlay-tray-stars-300.webp 300w, assets/img/bone-inlay-tray-stars-600.webp 600w, assets/img/bone-inlay-tray-stars-1200.webp 1200w" sizes="(max-width:640px) 44vw, (max-width:980px) 30vw, 280px" width="1200" height="688" alt="Bone inlay tray — Black and white pattern" loading="lazy" decoding="async"></button><button class="pick" type="button" aria-pressed="false" aria-label="Add to shortlist: Bone inlay tray — Black and white pattern"><svg class="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg><svg class="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></button><figcaption><span class="t">Bone inlay tray<small>Black and white pattern</small></span></figcaption></figure>
+        <figure class="tile" data-id="mop-flower-dish" data-title="Mother-of-pearl dish" data-sub="Carved flower" data-mat="Mother-of-pearl"><button class="ph" type="button" aria-label="View larger: Mother-of-pearl dish — Carved flower"><img src="assets/img/mop-flower-dish-600.webp" srcset="assets/img/mop-flower-dish-300.webp 235w, assets/img/mop-flower-dish-600.webp 470w, assets/img/mop-flower-dish-1200.webp 941w" sizes="(max-width:640px) 44vw, (max-width:980px) 30vw, 280px" width="941" height="1200" alt="Mother-of-pearl dish — Carved flower" loading="lazy" decoding="async"></button><button class="pick" type="button" aria-pressed="false" aria-label="Add to shortlist: Mother-of-pearl dish — Carved flower"><svg class="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg><svg class="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></button><figcaption><span class="t">Mother-of-pearl dish<small>Carved flower</small></span></figcaption></figure>
         <figure class="tile" data-id="horn-bowl-brass-stripes" data-title="Horn bowl" data-sub="Striped pattern" data-mat="Buffalo horn"><button class="ph" type="button" aria-label="View larger: Horn bowl — Striped pattern"><img src="assets/img/horn-bowl-brass-stripes-600.webp" srcset="assets/img/horn-bowl-brass-stripes-300.webp 300w, assets/img/horn-bowl-brass-stripes-600.webp 600w, assets/img/horn-bowl-brass-stripes-1200.webp 1200w" sizes="(max-width:640px) 44vw, (max-width:980px) 30vw, 280px" width="1200" height="919" alt="Horn bowl — Striped pattern" loading="lazy" decoding="async"></button><button class="pick" type="button" aria-pressed="false" aria-label="Add to shortlist: Horn bowl — Striped pattern"><svg class="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg><svg class="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></button><figcaption><span class="t">Horn bowl<small>Striped pattern</small></span></figcaption></figure>
         <figure class="tile" data-id="mop-dish-jewels" data-title="Mother-of-pearl dish" data-sub="Set with stones" data-mat="Mother-of-pearl"><button class="ph" type="button" aria-label="View larger: Mother-of-pearl dish — Set with stones"><img src="assets/img/mop-dish-jewels-600.webp" srcset="assets/img/mop-dish-jewels-300.webp 300w, assets/img/mop-dish-jewels-600.webp 600w, assets/img/mop-dish-jewels-1200.webp 755w" sizes="(max-width:640px) 44vw, (max-width:980px) 30vw, 280px" width="755" height="398" alt="Mother-of-pearl dish — Set with stones" loading="lazy" decoding="async"></button><button class="pick" type="button" aria-pressed="false" aria-label="Add to shortlist: Mother-of-pearl dish — Set with stones"><svg class="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg><svg class="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></button><figcaption><span class="t">Mother-of-pearl dish<small>Set with stones</small></span></figcaption></figure>
-        <figure class="tile" data-id="horn-bowl-two-tone" data-title="Horn bowl" data-sub="Natural two-tone horn" data-mat="Buffalo horn"><button class="ph" type="button" aria-label="View larger: Horn bowl — Natural two-tone horn"><img src="assets/img/horn-bowl-two-tone-600.webp" srcset="assets/img/horn-bowl-two-tone-300.webp 293w, assets/img/horn-bowl-two-tone-600.webp 470w" sizes="(max-width:640px) 44vw, (max-width:980px) 30vw, 280px" width="470" height="482" alt="Horn bowl — Natural two-tone horn" loading="lazy" decoding="async"></button><button class="pick" type="button" aria-pressed="false" aria-label="Add to shortlist: Horn bowl — Natural two-tone horn"><svg class="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg><svg class="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></button><figcaption><span class="t">Horn bowl<small>Natural two-tone horn</small></span></figcaption></figure>
-        <figure class="tile" data-id="mop-flower-dish" data-title="Mother-of-pearl dish" data-sub="Carved flower" data-mat="Mother-of-pearl"><button class="ph" type="button" aria-label="View larger: Mother-of-pearl dish — Carved flower"><img src="assets/img/mop-flower-dish-600.webp" srcset="assets/img/mop-flower-dish-300.webp 235w, assets/img/mop-flower-dish-600.webp 470w, assets/img/mop-flower-dish-1200.webp 941w" sizes="(max-width:640px) 44vw, (max-width:980px) 30vw, 280px" width="941" height="1200" alt="Mother-of-pearl dish — Carved flower" loading="lazy" decoding="async"></button><button class="pick" type="button" aria-pressed="false" aria-label="Add to shortlist: Mother-of-pearl dish — Carved flower"><svg class="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg><svg class="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></button><figcaption><span class="t">Mother-of-pearl dish<small>Carved flower</small></span></figcaption></figure>
+        <figure class="tile wide" data-id="mop-oval-dish" data-title="Mother-of-pearl dish" data-sub="Engraved fish" data-mat="Mother-of-pearl"><button class="ph" type="button" aria-label="View larger: Mother-of-pearl dish — Engraved fish"><img src="assets/img/mop-oval-dish-600.webp" srcset="assets/img/mop-oval-dish-300.webp 300w, assets/img/mop-oval-dish-600.webp 600w, assets/img/mop-oval-dish-1200.webp 1200w" sizes="(max-width:640px) 44vw, (max-width:980px) 30vw, 580px" width="1200" height="580" alt="Mother-of-pearl dish — Engraved fish" loading="lazy" decoding="async"></button><button class="pick" type="button" aria-pressed="false" aria-label="Add to shortlist: Mother-of-pearl dish — Engraved fish"><svg class="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg><svg class="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></button><figcaption><span class="t">Mother-of-pearl dish<small>Engraved fish</small></span></figcaption></figure>
         <figure class="tile" data-id="horn-tray-brass-swirl" data-title="Horn tray" data-sub="Swirl pattern" data-mat="Buffalo horn"><button class="ph" type="button" aria-label="View larger: Horn tray — Swirl pattern"><img src="assets/img/horn-tray-brass-swirl-600.webp" srcset="assets/img/horn-tray-brass-swirl-300.webp 300w, assets/img/horn-tray-brass-swirl-600.webp 600w, assets/img/horn-tray-brass-swirl-1200.webp 1200w" sizes="(max-width:640px) 44vw, (max-width:980px) 30vw, 280px" width="1200" height="1149" alt="Horn tray — Swirl pattern" loading="lazy" decoding="async"></button><button class="pick" type="button" aria-pressed="false" aria-label="Add to shortlist: Horn tray — Swirl pattern"><svg class="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg><svg class="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></button><figcaption><span class="t">Horn tray<small>Swirl pattern</small></span></figcaption></figure>
         <figure class="tile" data-id="bone-inlay-box-floral" data-title="Bone inlay box" data-sub="Floral pattern" data-mat="Bone inlay"><button class="ph" type="button" aria-label="View larger: Bone inlay box — Floral pattern"><img src="assets/img/bone-inlay-box-floral-600.webp" srcset="assets/img/bone-inlay-box-floral-300.webp 300w, assets/img/bone-inlay-box-floral-600.webp 537w" sizes="(max-width:640px) 44vw, (max-width:980px) 30vw, 280px" width="537" height="360" alt="Bone inlay box — Floral pattern" loading="lazy" decoding="async"></button><button class="pick" type="button" aria-pressed="false" aria-label="Add to shortlist: Bone inlay box — Floral pattern"><svg class="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg><svg class="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></button><figcaption><span class="t">Bone inlay box<small>Floral pattern</small></span></figcaption></figure>
         <figure class="tile" data-id="mop-spoon-diag" data-title="Mother-of-pearl spoon" data-sub="Embossed metal handle" data-mat="Mother-of-pearl"><button class="ph" type="button" aria-label="View larger: Mother-of-pearl spoon — Embossed metal handle"><img src="assets/img/mop-spoon-diag-600.webp" srcset="assets/img/mop-spoon-diag-300.webp 235w, assets/img/mop-spoon-diag-600.webp 471w, assets/img/mop-spoon-diag-1200.webp 891w" sizes="(max-width:640px) 44vw, (max-width:980px) 30vw, 280px" width="891" height="1136" alt="Mother-of-pearl spoon — Embossed metal handle" loading="lazy" decoding="async"></button><button class="pick" type="button" aria-pressed="false" aria-label="Add to shortlist: Mother-of-pearl spoon — Embossed metal handle"><svg class="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg><svg class="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></button><figcaption><span class="t">Mother-of-pearl spoon<small>Embossed metal handle</small></span></figcaption></figure>
         <figure class="tile" data-id="horn-plate-rings" data-title="Horn plate" data-sub="Ring pattern" data-mat="Buffalo horn"><button class="ph" type="button" aria-label="View larger: Horn plate — Ring pattern"><img src="assets/img/horn-plate-rings-600.webp" srcset="assets/img/horn-plate-rings-300.webp 300w, assets/img/horn-plate-rings-600.webp 600w, assets/img/horn-plate-rings-1200.webp 602w" sizes="(max-width:640px) 44vw, (max-width:980px) 30vw, 280px" width="602" height="602" alt="Horn plate — Ring pattern" loading="lazy" decoding="async"></button><button class="pick" type="button" aria-pressed="false" aria-label="Add to shortlist: Horn plate — Ring pattern"><svg class="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg><svg class="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></button><figcaption><span class="t">Horn plate<small>Ring pattern</small></span></figcaption></figure>
-        <figure class="tile" data-id="mop-oval-dish" data-title="Mother-of-pearl dish" data-sub="Engraved fish" data-mat="Mother-of-pearl"><button class="ph" type="button" aria-label="View larger: Mother-of-pearl dish — Engraved fish"><img src="assets/img/mop-oval-dish-600.webp" srcset="assets/img/mop-oval-dish-300.webp 300w, assets/img/mop-oval-dish-600.webp 600w, assets/img/mop-oval-dish-1200.webp 1200w" sizes="(max-width:640px) 44vw, (max-width:980px) 30vw, 280px" width="1200" height="580" alt="Mother-of-pearl dish — Engraved fish" loading="lazy" decoding="async"></button><button class="pick" type="button" aria-pressed="false" aria-label="Add to shortlist: Mother-of-pearl dish — Engraved fish"><svg class="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg><svg class="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></button><figcaption><span class="t">Mother-of-pearl dish<small>Engraved fish</small></span></figcaption></figure>
         <figure class="tile" data-id="bone-inlay-box-cubes" data-title="Bone inlay box" data-sub="Geometric pattern" data-mat="Bone inlay"><button class="ph" type="button" aria-label="View larger: Bone inlay box — Geometric pattern"><img src="assets/img/bone-inlay-box-cubes-600.webp" srcset="assets/img/bone-inlay-box-cubes-300.webp 300w, assets/img/bone-inlay-box-cubes-600.webp 484w" sizes="(max-width:640px) 44vw, (max-width:980px) 30vw, 280px" width="484" height="326" alt="Bone inlay box — Geometric pattern" loading="lazy" decoding="async"></button><button class="pick" type="button" aria-pressed="false" aria-label="Add to shortlist: Bone inlay box — Geometric pattern"><svg class="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg><svg class="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></button><figcaption><span class="t">Bone inlay box<small>Geometric pattern</small></span></figcaption></figure>
         <figure class="tile" data-id="horn-bowl-dots" data-title="Horn bowl" data-sub="Dotted pattern" data-mat="Buffalo horn"><button class="ph" type="button" aria-label="View larger: Horn bowl — Dotted pattern"><img src="assets/img/horn-bowl-dots-600.webp" srcset="assets/img/horn-bowl-dots-300.webp 300w, assets/img/horn-bowl-dots-600.webp 600w, assets/img/horn-bowl-dots-1200.webp 1200w" sizes="(max-width:640px) 44vw, (max-width:980px) 30vw, 280px" width="1200" height="885" alt="Horn bowl — Dotted pattern" loading="lazy" decoding="async"></button><button class="pick" type="button" aria-pressed="false" aria-label="Add to shortlist: Horn bowl — Dotted pattern"><svg class="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg><svg class="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></button><figcaption><span class="t">Horn bowl<small>Dotted pattern</small></span></figcaption></figure>
         <figure class="tile" data-id="mop-bird-dish" data-title="Mother-of-pearl dish" data-sub="Carved bird" data-mat="Mother-of-pearl"><button class="ph" type="button" aria-label="View larger: Mother-of-pearl dish — Carved bird"><img src="assets/img/mop-bird-dish-600.webp" srcset="assets/img/mop-bird-dish-300.webp 153w, assets/img/mop-bird-dish-600.webp 305w, assets/img/mop-bird-dish-1200.webp 610w" sizes="(max-width:640px) 44vw, (max-width:980px) 30vw, 280px" width="610" height="1200" alt="Mother-of-pearl dish — Carved bird" loading="lazy" decoding="async"></button><button class="pick" type="button" aria-pressed="false" aria-label="Add to shortlist: Mother-of-pearl dish — Carved bird"><svg class="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg><svg class="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></button><figcaption><span class="t">Mother-of-pearl dish<small>Carved bird</small></span></figcaption></figure>
         <figure class="tile" data-id="horn-spoon-diag" data-title="Horn spoon" data-sub="Long handle" data-mat="Buffalo horn"><button class="ph" type="button" aria-label="View larger: Horn spoon — Long handle"><img src="assets/img/horn-spoon-diag-600.webp" srcset="assets/img/horn-spoon-diag-300.webp 259w, assets/img/horn-spoon-diag-600.webp 517w, assets/img/horn-spoon-diag-1200.webp 977w" sizes="(max-width:640px) 44vw, (max-width:980px) 30vw, 280px" width="977" height="1133" alt="Horn spoon — Long handle" loading="lazy" decoding="async"></button><button class="pick" type="button" aria-pressed="false" aria-label="Add to shortlist: Horn spoon — Long handle"><svg class="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg><svg class="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></button><figcaption><span class="t">Horn spoon<small>Long handle</small></span></figcaption></figure>
         <figure class="tile" data-id="mop-plate-silver" data-title="Mother-of-pearl dish" data-sub="Metal trim" data-mat="Mother-of-pearl"><button class="ph" type="button" aria-label="View larger: Mother-of-pearl dish — Metal trim"><img src="assets/img/mop-plate-silver-600.webp" srcset="assets/img/mop-plate-silver-300.webp 154w, assets/img/mop-plate-silver-600.webp 307w, assets/img/mop-plate-silver-1200.webp 615w" sizes="(max-width:640px) 44vw, (max-width:980px) 30vw, 280px" width="615" height="1200" alt="Mother-of-pearl dish — Metal trim" loading="lazy" decoding="async"></button><button class="pick" type="button" aria-pressed="false" aria-label="Add to shortlist: Mother-of-pearl dish — Metal trim"><svg class="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg><svg class="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></button><figcaption><span class="t">Mother-of-pearl dish<small>Metal trim</small></span></figcaption></figure>
-        <figure class="tile" data-id="horn-bowl-brass-rim" data-title="Horn bowl" data-sub="With metal rim" data-mat="Buffalo horn"><button class="ph" type="button" aria-label="View larger: Horn bowl — With metal rim"><img src="assets/img/horn-bowl-brass-rim-600.webp" srcset="assets/img/horn-bowl-brass-rim-300.webp 295w, assets/img/horn-bowl-brass-rim-600.webp 467w" sizes="(max-width:640px) 44vw, (max-width:980px) 30vw, 280px" width="467" height="475" alt="Horn bowl — With metal rim" loading="lazy" decoding="async"></button><button class="pick" type="button" aria-pressed="false" aria-label="Add to shortlist: Horn bowl — With metal rim"><svg class="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg><svg class="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></button><figcaption><span class="t">Horn bowl<small>With metal rim</small></span></figcaption></figure>
+        <figure class="tile" data-id="horn-bowl-two-tone" data-title="Horn bowl" data-sub="Natural two-tone horn" data-mat="Buffalo horn"><button class="ph" type="button" aria-label="View larger: Horn bowl — Natural two-tone horn"><img src="assets/img/horn-bowl-two-tone-600.webp" srcset="assets/img/horn-bowl-two-tone-300.webp 293w, assets/img/horn-bowl-two-tone-600.webp 470w" sizes="(max-width:640px) 44vw, (max-width:980px) 30vw, 280px" width="470" height="482" alt="Horn bowl — Natural two-tone horn" loading="lazy" decoding="async"></button><button class="pick" type="button" aria-pressed="false" aria-label="Add to shortlist: Horn bowl — Natural two-tone horn"><svg class="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg><svg class="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></button><figcaption><span class="t">Horn bowl<small>Natural two-tone horn</small></span></figcaption></figure>
       </div>
       <button class="btn btn-line more-btn js-only" type="button" aria-expanded="false" aria-controls="gallery">Show all 16 pieces</button>
       <div class="gal-note">
@@ -739,47 +743,29 @@ html.lb-open{overflow:hidden}
     </div>
   </section>
 
-  <section id="fair" aria-labelledby="fair-title">
+  <section id="fair" class="fair-sec" aria-labelledby="fair-title">
     <div class="wrap">
-      <div class="ticket">
-        <div class="t-left">
-          <p class="eyebrow"><span class="fair-before">Meet us at</span><span class="fair-after">We exhibit at</span></p>
-          <h2 id="fair-title">IHGF Delhi Fair</h2>
-          <p class="fair-before">62nd edition, Autumn 2026. Come and see the pieces in person, and talk to us about your order.</p>
-          <p class="fair-after">Thank you to everyone who visited us at the Autumn 2026 edition. Ask us about the next fair.</p>
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">Trade fairs</p>
+          <h2 id="fair-title"><span class="fair-before">See us at IHGF Delhi Fair, <em>Autumn 2026.</em></span><span class="fair-after">Thank you, <em>Autumn 2026.</em></span></h2>
         </div>
-        <div class="t-mid">
-          <span class="nt tl" aria-hidden="true"></span><span class="nt bl" aria-hidden="true"></span><span class="nt tr" aria-hidden="true"></span><span class="nt br" aria-hidden="true"></span>
-          <div class="hall">Hall</div>
-          <div class="big">3</div>
-          <div class="stand">Stand E-06/05</div>
-        </div>
-        <div class="t-right">
-          <p class="count-chip fair-before js-only"><span class="js-count">13–17 Oct 2026</span></p>
-          <p class="count-chip fair-after"><span>Autumn 2026 edition</span></p>
-          <div class="when">13–17 October 2026</div>
-          <div class="where">India Expo Centre &amp; Mart, Greater Noida</div>
-          <div class="t-actions fair-before">
-            <a class="btn btn-gold" href="#enquire" data-intent="meeting"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>Book a meeting</a>
-            <a class="btn btn-ghost" href="ihgf-autumn-2026.ics" download>Add to calendar</a>
-            <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&amp;query=India+Expo+Centre+%26+Mart+Greater+Noida" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Directions</a>
-          </div>
-          <div class="t-actions fair-after"><a class="btn btn-gold" href="mailto:info@chowringheearts.com?subject=Your%20next%20trade%20fair">Ask about the next fair</a></div>
-        </div>
+        <p class="lede"><span class="fair-before">13–17 October 2026, Hall 3, Stand E-06/05, India Expo Centre &amp; Mart, Greater Noida. Come and see the pieces in person.</span><span class="fair-after">To everyone who visited us in Hall 3, Stand E-06/05 at IHGF Delhi Fair — thank you. Photos and prices from the fair are going out now. Ask us about the next edition.</span></p>
       </div>
-      <div class="fair-row">
-        <figure class="stand-photo"><img src="assets/img/stand-front-1024.webp" srcset="assets/img/stand-front-1024.webp 1024w" sizes="(max-width:900px) 92vw, 720px" width="1024" height="768" alt="The Chowringhee Arts stand at IHGF Delhi Fair, Autumn 2025" loading="lazy" decoding="async"><figcaption>Our stand at IHGF Delhi Fair, Autumn 2025</figcaption></figure>
-        <div class="past-card">
-          <p class="eyebrow">Where we've been</p>
-          <h3>IHGF Delhi Fair</h3>
-          <ul class="past-list">
-            <li class="fair-before now"><b class="js-when-label">Autumn 2026 — coming up</b>Hall 3, Stand E-06/05 · 13–17 Oct</li>
-            <li class="fair-after"><b>Autumn 2026</b>Hall 3, Stand E-06/05</li>
-            <li><b>Spring 2026</b>Hall 11, G10/29</li>
-            <li><b>Autumn 2025</b>Hall 16, J-01/11</li>
-          </ul>
+      <div class="fair-gallery">
+        <figure class="stand-photo"><img src="assets/img/stand-front-1024.webp" srcset="assets/img/stand-front-1024.webp 1024w" sizes="(max-width:900px) 92vw, 680px" width="1024" height="768" alt="The Chowringhee Arts stand at IHGF Delhi Fair, Autumn 2025" loading="lazy" decoding="async"><figcaption>Our stand at IHGF Delhi Fair, Autumn 2025</figcaption></figure>
+        <figure class="stand-photo tall"><img src="assets/img/stand-shelves-720.webp" srcset="assets/img/stand-shelves-480.webp 480w, assets/img/stand-shelves-720.webp 720w, assets/img/stand-shelves-1080.webp 1080w" sizes="(max-width:900px) 92vw, 460px" width="1440" height="1192" alt="Shelves of bone inlay, horn and shell pieces on the Chowringhee Arts stand" loading="lazy" decoding="async"><figcaption>Bone inlay, horn and shell on the shelves</figcaption></figure>
+      </div>
+      <div class="fair-foot">
+        <ul class="past-list" aria-label="Where we've been">
+          <li><b>Autumn 2025</b>Hall 16, J-01/11</li>
+          <li><b>Spring 2026</b>Hall 11, G10/29</li>
+          <li><b>Autumn 2026</b>Hall 3, E-06/05</li>
+          <li class="next"><b>Next edition</b>Ask us for dates and stand</li>
+        </ul>
+        <div class="cta-row">
           <a class="btn btn-ink fair-before" href="#enquire" data-intent="meeting"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>Book a meeting at the fair</a>
-          <a class="btn btn-ink fair-after" href="mailto:info@chowringheearts.com?subject=Your%20next%20trade%20fair">Ask about the next fair</a>
+          <a class="btn btn-ink fair-after" href="mailto:info@chowringheearts.com?subject=Your%20next%20trade%20fair"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4 7 8 6 8-6"/></svg>Ask about the next fair</a>
         </div>
       </div>
     </div>
@@ -942,7 +928,7 @@ html.lb-open{overflow:hidden}
 </dialog>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script id="pieces" type="application/json">[{"id":"bone-inlay-tray-stars","title":"Bone inlay tray","sub":"Black and white pattern","mat":"Bone inlay","w":1200,"h":688},{"id":"horn-bowl-brass-stripes","title":"Horn bowl","sub":"Striped pattern","mat":"Buffalo horn","w":1200,"h":919},{"id":"mop-dish-jewels","title":"Mother-of-pearl dish","sub":"Set with stones","mat":"Mother-of-pearl","w":755,"h":398},{"id":"horn-bowl-two-tone","title":"Horn bowl","sub":"Natural two-tone horn","mat":"Buffalo horn","w":470,"h":482},{"id":"mop-flower-dish","title":"Mother-of-pearl dish","sub":"Carved flower","mat":"Mother-of-pearl","w":941,"h":1200},{"id":"horn-tray-brass-swirl","title":"Horn tray","sub":"Swirl pattern","mat":"Buffalo horn","w":1200,"h":1149},{"id":"bone-inlay-box-floral","title":"Bone inlay box","sub":"Floral pattern","mat":"Bone inlay","w":537,"h":360},{"id":"mop-spoon-diag","title":"Mother-of-pearl spoon","sub":"Embossed metal handle","mat":"Mother-of-pearl","w":891,"h":1136},{"id":"horn-plate-rings","title":"Horn plate","sub":"Ring pattern","mat":"Buffalo horn","w":602,"h":602},{"id":"mop-oval-dish","title":"Mother-of-pearl dish","sub":"Engraved fish","mat":"Mother-of-pearl","w":1200,"h":580},{"id":"bone-inlay-box-cubes","title":"Bone inlay box","sub":"Geometric pattern","mat":"Bone inlay","w":484,"h":326},{"id":"horn-bowl-dots","title":"Horn bowl","sub":"Dotted pattern","mat":"Buffalo horn","w":1200,"h":885},{"id":"mop-bird-dish","title":"Mother-of-pearl dish","sub":"Carved bird","mat":"Mother-of-pearl","w":610,"h":1200},{"id":"horn-spoon-diag","title":"Horn spoon","sub":"Long handle","mat":"Buffalo horn","w":977,"h":1133},{"id":"mop-plate-silver","title":"Mother-of-pearl dish","sub":"Metal trim","mat":"Mother-of-pearl","w":615,"h":1200},{"id":"horn-bowl-brass-rim","title":"Horn bowl","sub":"With metal rim","mat":"Buffalo horn","w":467,"h":475}]</script>
+<script id="pieces" type="application/json">[{"id":"horn-bowls-trio","title":"Horn bowls — three finishes","sub":"Natural, dotted and brass-striped","mat":"Buffalo horn","w":1188,"h":715},{"id":"bone-inlay-tray-stars","title":"Bone inlay tray","sub":"Black and white pattern","mat":"Bone inlay","w":1200,"h":688},{"id":"mop-flower-dish","title":"Mother-of-pearl dish","sub":"Carved flower","mat":"Mother-of-pearl","w":941,"h":1200},{"id":"horn-bowl-brass-stripes","title":"Horn bowl","sub":"Striped pattern","mat":"Buffalo horn","w":1200,"h":919},{"id":"mop-dish-jewels","title":"Mother-of-pearl dish","sub":"Set with stones","mat":"Mother-of-pearl","w":755,"h":398},{"id":"mop-oval-dish","title":"Mother-of-pearl dish","sub":"Engraved fish","mat":"Mother-of-pearl","w":1200,"h":580},{"id":"horn-tray-brass-swirl","title":"Horn tray","sub":"Swirl pattern","mat":"Buffalo horn","w":1200,"h":1149},{"id":"bone-inlay-box-floral","title":"Bone inlay box","sub":"Floral pattern","mat":"Bone inlay","w":537,"h":360},{"id":"mop-spoon-diag","title":"Mother-of-pearl spoon","sub":"Embossed metal handle","mat":"Mother-of-pearl","w":891,"h":1136},{"id":"horn-plate-rings","title":"Horn plate","sub":"Ring pattern","mat":"Buffalo horn","w":602,"h":602},{"id":"bone-inlay-box-cubes","title":"Bone inlay box","sub":"Geometric pattern","mat":"Bone inlay","w":484,"h":326},{"id":"horn-bowl-dots","title":"Horn bowl","sub":"Dotted pattern","mat":"Buffalo horn","w":1200,"h":885},{"id":"mop-bird-dish","title":"Mother-of-pearl dish","sub":"Carved bird","mat":"Mother-of-pearl","w":610,"h":1200},{"id":"horn-spoon-diag","title":"Horn spoon","sub":"Long handle","mat":"Buffalo horn","w":977,"h":1133},{"id":"mop-plate-silver","title":"Mother-of-pearl dish","sub":"Metal trim","mat":"Mother-of-pearl","w":615,"h":1200},{"id":"horn-bowl-two-tone","title":"Horn bowl","sub":"Natural two-tone horn","mat":"Buffalo horn","w":470,"h":482}]</script>
 <script>
 (function(){
   'use strict';
@@ -1027,6 +1013,15 @@ html.lb-open{overflow:hidden}
     more.textContent = open ? 'Show fewer pieces' : 'Show all ' + PIECES.length + ' pieces';
     if (!open) gallery.scrollIntoView({block: 'start', behavior: reduce ? 'auto' : 'smooth'});
   });
+
+  /* material filters */
+  var filters = $$('.filters button');
+  function applyFilter(mat){
+    filters.forEach(function(b){ b.setAttribute('aria-pressed', String((b.getAttribute('data-mat') || '') === mat)); });
+    gallery.classList.toggle('filtered', !!mat);
+    $$('.tile', gallery).forEach(function(t){ t.hidden = !!mat && t.getAttribute('data-mat') !== mat; });
+  }
+  filters.forEach(function(b){ b.addEventListener('click', function(){ applyFilter(b.getAttribute('data-mat') || ''); }); });
 
   /* piece viewer */
   var lb = $('#lb'), cur = 0, opener = null, lbImg = $('.lb-img', lb), lbPick = $('.lb-pick', lb);
@@ -1136,10 +1131,13 @@ html.lb-open{overflow:hidden}
     $('.js-send-label', form).textContent = 'Send enquiry';
     $('#send-alt-email').hidden = true; $('#send-alt-direct').hidden = false;
   }
+  var T0 = Date.now();
   function sendDirect(m){
     var btn = $('[data-via=email]', form), label = $('.js-send-label', btn);
     if (btn.disabled) return;
     btn.disabled = true; label.textContent = 'Sending…'; sentFail.hidden = true;
+    /* bot guard: a real person cannot fill the form in under four seconds, so such a submission is quietly dropped */
+    if (Date.now() - T0 < 4000 || (form.elements.botcheck && form.elements.botcheck.checked)) { label.textContent = 'Sent ✓'; sentOk.hidden = false; return; }
     var payload = {access_key: W3KEY, subject: m.subject, from_name: v('name') + ' (' + v('company') + ')', message: m.body,
                    name: v('name'), company: v('company'), country: v('country'), phone: v('phone'),
                    botcheck: form.elements.botcheck && form.elements.botcheck.checked ? 'on' : ''};

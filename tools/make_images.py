@@ -15,7 +15,7 @@ IDS = ['horn-bowls-trio','horn-bowl-two-tone','horn-bowl-amber','horn-bowl-brass
        'cat-bone-box','cat-resin-box','mop-bird-platter','mop-bird-dish','mop-dish-jewels','mop-flower-dish',
        'mop-oval-dish','mop-plate-silver','mop-spoon-diag','cat-shell-sp','cat-stool','cat-napkin-ring',
        'cat-magnifier','stand-front','stand-shelves']
-STEPS = [480, 960, 1600]
+STEPS = [240, 480, 960, 1600]
 BG = (255, 252, 246)  # --card, for the JPEG fallback of cut-out photos
 def largest(i):
     best = None
@@ -37,7 +37,7 @@ for i in IDS:
     for tw in widths:
         th = round(h * tw / w)
         r = im.resize((tw, th), Image.LANCZOS) if tw != w else im.copy()
-        r.save(os.path.join(OUT, f'{i}-{tw}.webp'), 'WEBP', quality=82, method=6)
+        r.save(os.path.join(OUT, f'{i}-{tw}.webp'), 'WEBP', quality=82, method=4)
         if r.mode in ('RGBA', 'LA'):
             bg = Image.new('RGB', r.size, BG); bg.paste(r, mask=r.split()[-1]); r = bg
         r.convert('RGB').save(os.path.join(OUT, f'{i}-{tw}.jpg'), 'JPEG', quality=82, optimize=True, progressive=True)

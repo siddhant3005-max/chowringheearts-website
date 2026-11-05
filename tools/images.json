@@ -3,6 +3,10 @@
   "src": "horn-bowls-trio-1200.webp",
   "sizes": [
    [
+    240,
+    144
+   ],
+   [
     480,
     289
    ],
@@ -20,6 +24,10 @@
   "src": "horn-bowl-two-tone-600.webp",
   "sizes": [
    [
+    240,
+    246
+   ],
+   [
     470,
     482
    ]
@@ -28,6 +36,10 @@
  "horn-bowl-amber": {
   "src": "horn-bowl-amber-1200.webp",
   "sizes": [
+   [
+    240,
+    174
+   ],
    [
     480,
     348
@@ -46,6 +58,10 @@
   "src": "horn-bowl-brass-stripes-1200.webp",
   "sizes": [
    [
+    240,
+    184
+   ],
+   [
     480,
     368
    ],
@@ -62,6 +78,10 @@
  "horn-bowl-dots": {
   "src": "horn-bowl-dots-1200.webp",
   "sizes": [
+   [
+    240,
+    177
+   ],
    [
     480,
     354
@@ -80,6 +100,10 @@
   "src": "horn-bowl-gold-swirl-600.webp",
   "sizes": [
    [
+    240,
+    210
+   ],
+   [
     480,
     421
    ],
@@ -93,6 +117,10 @@
   "src": "horn-plate-rings-1200.webp",
   "sizes": [
    [
+    240,
+    240
+   ],
+   [
     480,
     480
    ],
@@ -105,6 +133,10 @@
  "horn-tray-brass-swirl": {
   "src": "horn-tray-brass-swirl-1200.webp",
   "sizes": [
+   [
+    240,
+    230
+   ],
    [
     480,
     460
@@ -123,6 +155,10 @@
   "src": "horn-spoon-diag-1200.webp",
   "sizes": [
    [
+    240,
+    278
+   ],
+   [
     480,
     557
    ],
@@ -140,6 +176,10 @@
   "src": "cat-horn-bowl-600.webp",
   "sizes": [
    [
+    240,
+    187
+   ],
+   [
     480,
     374
    ],
@@ -152,6 +192,10 @@
  "cat-servers": {
   "src": "cat-servers-600.webp",
   "sizes": [
+   [
+    240,
+    98
+   ],
    [
     480,
     196
@@ -166,6 +210,10 @@
   "src": "cat-comb-600.webp",
   "sizes": [
    [
+    240,
+    244
+   ],
+   [
     351,
     357
    ]
@@ -174,6 +222,10 @@
  "bone-inlay-tray-stars": {
   "src": "bone-inlay-tray-stars-1200.webp",
   "sizes": [
+   [
+    240,
+    138
+   ],
    [
     480,
     275
@@ -192,6 +244,10 @@
   "src": "bone-inlay-box-floral-1200.webp",
   "sizes": [
    [
+    240,
+    161
+   ],
+   [
     480,
     322
    ],
@@ -204,6 +260,10 @@
  "bone-inlay-box-cubes": {
   "src": "bone-inlay-box-cubes-600.webp",
   "sizes": [
+   [
+    240,
+    162
+   ],
    [
     480,
     323
@@ -218,6 +278,10 @@
   "src": "cat-bone-box-600.webp",
   "sizes": [
    [
+    240,
+    106
+   ],
+   [
     480,
     212
    ],
@@ -231,6 +295,10 @@
   "src": "cat-resin-box-600.webp",
   "sizes": [
    [
+    240,
+    184
+   ],
+   [
     480,
     369
    ],
@@ -243,6 +311,10 @@
  "mop-bird-platter": {
   "src": "mop-bird-platter-1200.webp",
   "sizes": [
+   [
+    240,
+    129
+   ],
    [
     480,
     257
@@ -261,6 +333,10 @@
   "src": "mop-bird-dish-1200.webp",
   "sizes": [
    [
+    240,
+    472
+   ],
+   [
     480,
     944
    ],
@@ -273,6 +349,10 @@
  "mop-dish-jewels": {
   "src": "mop-dish-jewels-1200.webp",
   "sizes": [
+   [
+    240,
+    127
+   ],
    [
     480,
     253
@@ -287,6 +367,10 @@
   "src": "mop-flower-dish-1200.webp",
   "sizes": [
    [
+    240,
+    306
+   ],
+   [
     480,
     612
    ],
@@ -299,6 +383,10 @@
  "mop-oval-dish": {
   "src": "mop-oval-dish-1200.webp",
   "sizes": [
+   [
+    240,
+    116
+   ],
    [
     480,
     232
@@ -317,6 +405,10 @@
   "src": "mop-plate-silver-1200.webp",
   "sizes": [
    [
+    240,
+    468
+   ],
+   [
     480,
     937
    ],
@@ -329,6 +421,10 @@
  "mop-spoon-diag": {
   "src": "mop-spoon-diag-1200.webp",
   "sizes": [
+   [
+    240,
+    306
+   ],
    [
     480,
     612
@@ -343,6 +439,10 @@
   "src": "cat-shell-sp-600.webp",
   "sizes": [
    [
+    240,
+    147
+   ],
+   [
     480,
     294
    ],
@@ -356,6 +456,10 @@
   "src": "cat-stool-600.webp",
   "sizes": [
    [
+    240,
+    378
+   ],
+   [
     282,
     444
    ]
@@ -364,6 +468,10 @@
  "cat-napkin-ring": {
   "src": "cat-napkin-ring-600.webp",
   "sizes": [
+   [
+    240,
+    131
+   ],
    [
     480,
     262
@@ -378,6 +486,10 @@
   "src": "cat-magnifier-600.webp",
   "sizes": [
    [
+    240,
+    99
+   ],
+   [
     480,
     198
    ],
@@ -390,6 +502,10 @@
  "stand-front": {
   "src": "stand-front-1024.webp",
   "sizes": [
+   [
+    240,
+    180
+   ],
    [
     480,
     360
@@ -407,6 +523,10 @@
  "stand-shelves": {
   "src": "stand-shelves-1440.webp",
   "sizes": [
+   [
+    240,
+    199
+   ],
    [
     480,
     397

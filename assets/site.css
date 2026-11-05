@@ -260,3 +260,4 @@ a.c-card:hover{border-color:var(--gold);transform:translateY(-2px)}
 .foot-cols{grid-template-columns:1fr 1fr 1fr}
 @media (max-width:640px){.foot-cols{grid-template-columns:1fr 1fr}}
 @media (max-width:420px){.foot-cols{grid-template-columns:1fr}}
+@media (max-width:480px){.cta-row .btn{white-space:normal;text-align:center;line-height:1.3;padding:12px 20px;max-width:100%}.next{padding:24px 18px}}

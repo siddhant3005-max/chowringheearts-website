@@ -122,7 +122,8 @@ html{scroll-padding-top:calc(var(--head) - 6px);scroll-padding-bottom:96px}
 .menu .wrap{display:grid;padding-top:6px;padding-bottom:14px}
 .menu a{display:block;padding:15px 2px;color:var(--on-navy);text-decoration:none;font:500 17px/1.2 var(--sans);border-bottom:1px solid var(--line-navy)}
 .menu a:last-child{border-bottom:0}
-@media (max-width:900px){.nav .lnk{display:none}.menu-btn{display:inline-flex}.nav{gap:10px}.brand img{height:42px}}
+@media (max-width:1140px){.nav .lnk{display:none}.menu-btn{display:inline-flex}.nav{gap:10px}}
+@media (max-width:900px){.brand img{height:42px}}
 @media (min-width:901px){.menu{display:none!important}}
 html:not(.js) .menu-btn{display:none!important}
 
@@ -344,7 +345,7 @@ section{position:relative;padding:clamp(72px,9vw,128px) 0}
 .past-list li::before{content:"";position:absolute;left:0;top:.5em;width:10px;height:10px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 3px rgba(211,162,78,.22)}
 .past-list li.next::before{background:transparent;border:2px solid var(--gold);box-shadow:none;box-sizing:border-box}
 .past-list b{display:block;color:var(--ink-deep);font-weight:500}
-@media (max-width:900px){.fair-gallery{grid-template-columns:1fr}.stand-photo{aspect-ratio:4/3}.stand-photo.tall{aspect-ratio:16/10}.fair-foot{align-items:flex-start;flex-direction:column}}
+@media (max-width:900px){.fair-gallery{grid-template-columns:1fr}.stand-photo{aspect-ratio:4/3}.stand-photo.tall{aspect-ratio:16/10;min-height:0}.fair-foot{align-items:flex-start;flex-direction:column}}
 
 /* enquire */
 .enquire{padding-top:clamp(40px,5vw,72px)}
@@ -776,7 +777,7 @@ html.lb-open{overflow:hidden}
           <li><b>Autumn 2025</b>Hall 16, J-01/11</li>
           <li><b>Spring 2026</b>Hall 11, G10/29</li>
           <li><b>Autumn 2026</b>Hall 3, E-06/05</li>
-          <li class="next"><b>Next edition</b>Ask us for dates and stand</li>
+          <li class="next"><b>Spring 2027 · 15–19 March 2027</b>India Expo Centre and Mart, Greater Noida. Write to us for our stand.</li>
         </ul>
         <div class="cta-row">
           <a class="btn btn-ink fair-before" href="#enquire" data-intent="meeting"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>Book a meeting at the fair</a>

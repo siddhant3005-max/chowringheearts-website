@@ -122,7 +122,8 @@ html{scroll-padding-top:calc(var(--head) - 6px);scroll-padding-bottom:96px}
 .menu .wrap{display:grid;padding-top:6px;padding-bottom:14px}
 .menu a{display:block;padding:15px 2px;color:var(--on-navy);text-decoration:none;font:500 17px/1.2 var(--sans);border-bottom:1px solid var(--line-navy)}
 .menu a:last-child{border-bottom:0}
-@media (max-width:900px){.nav .lnk{display:none}.menu-btn{display:inline-flex}.nav{gap:10px}.brand img{height:42px}}
+@media (max-width:1140px){.nav .lnk{display:none}.menu-btn{display:inline-flex}.nav{gap:10px}}
+@media (max-width:900px){.brand img{height:42px}}
 @media (min-width:901px){.menu{display:none!important}}
 html:not(.js) .menu-btn{display:none!important}
 
@@ -247,6 +248,10 @@ section{position:relative;padding:clamp(72px,9vw,128px) 0}
 .thumbs img{position:absolute;inset:0;margin:auto;max-width:76%;max-height:76%;width:auto;height:auto;object-fit:contain;filter:drop-shadow(0 8px 8px rgba(60,40,20,.22))}
 .also{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px;margin:30px 0 0;padding:0;list-style:none}
 .also li{padding:9px 15px;border-radius:999px;background:var(--card);border:1px solid var(--line);font:500 13.5px/1.2 var(--sans);color:var(--ink-deep)}
+.mat-more{display:inline-block;margin-top:2px;font:500 14.5px/1.4 var(--sans);color:var(--ink);text-underline-offset:3px}
+.mat .body .mat-more+.mat-more{margin-left:14px}
+.also a{color:inherit}
+.menu a.sub{padding-left:16px;font-size:15.5px}
 .also .k{background:transparent;border:0;padding:9px 4px;color:var(--gold-ink);letter-spacing:.2em;text-transform:uppercase;font-size:12px;font-weight:600}
 
 /* range (what we make) */
@@ -340,7 +345,7 @@ section{position:relative;padding:clamp(72px,9vw,128px) 0}
 .past-list li::before{content:"";position:absolute;left:0;top:.5em;width:10px;height:10px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 3px rgba(211,162,78,.22)}
 .past-list li.next::before{background:transparent;border:2px solid var(--gold);box-shadow:none;box-sizing:border-box}
 .past-list b{display:block;color:var(--ink-deep);font-weight:500}
-@media (max-width:900px){.fair-gallery{grid-template-columns:1fr}.stand-photo{aspect-ratio:4/3}.stand-photo.tall{aspect-ratio:16/10}.fair-foot{align-items:flex-start;flex-direction:column}}
+@media (max-width:900px){.fair-gallery{grid-template-columns:1fr}.stand-photo{aspect-ratio:4/3}.stand-photo.tall{aspect-ratio:16/10;min-height:0}.fair-foot{align-items:flex-start;flex-direction:column}}
 
 /* enquire */
 .enquire{padding-top:clamp(40px,5vw,72px)}
@@ -478,10 +483,11 @@ html.lb-open{overflow:hidden}
   <div class="wrap">
     <a class="brand" href="./" aria-label="Chowringhee Arts home"><img src="assets/logo-gold.svg" alt="Chowringhee Arts" width="112" height="50"></a>
     <nav class="nav" aria-label="Main">
-      <a class="lnk" href="#story">Why us</a>
+      <a class="lnk" href="#materials">Materials</a>
       <a class="lnk" href="#range">What we make</a>
       <a class="lnk" href="#collection">Collection</a>
-      <a class="lnk" href="#how">How it works</a>
+      <a class="lnk" href="trade/">How we trade</a>
+      <a class="lnk" href="about/">About</a>
       <a class="lnk" href="#fair"><span class="fair-before">IHGF 2026</span><span class="fair-after">Trade fairs</span></a>
       <a class="lnk" href="#enquire">Contact</a>
       <a class="btn btn-gold btn-sm" href="#enquire">Enquire</a>
@@ -492,9 +498,16 @@ html.lb-open{overflow:hidden}
     <div class="wrap">
       <a href="#story">Why us</a>
       <a href="#materials">Materials</a>
+      <a class="sub" href="horn/">Buffalo horn</a>
+      <a class="sub" href="bone-inlay/">Bone inlay</a>
+      <a class="sub" href="mother-of-pearl/">Mother-of-pearl</a>
+      <a class="sub" href="seashell/">Seashell</a>
+      <a class="sub" href="resin/">Resin &amp; terrazzo</a>
       <a href="#range">What we make</a>
       <a href="#collection">Collection</a>
       <a href="#how">How it works</a>
+      <a href="trade/">How we trade</a>
+      <a href="about/">About us</a>
       <a href="#fair"><span class="fair-before">IHGF Delhi Fair 2026</span><span class="fair-after">Trade fairs</span></a>
       <a href="#enquire">Contact</a>
     </div>
@@ -635,20 +648,23 @@ html.lb-open{overflow:hidden}
         <article class="mat">
           <div class="stage"><img src="assets/img/horn-bowl-two-tone-600.webp" srcset="assets/img/horn-bowl-two-tone-300.webp 293w, assets/img/horn-bowl-two-tone-600.webp 470w" sizes="(max-width:980px) 70vw, 300px" width="470" height="482" alt="Two-tone horn bowl" loading="lazy" decoding="async"></div>
           <div class="body"><h3>Buffalo horn</h3><p>Real buffalo horn, a by-product of cattle farming, polished to bring out its grain. Every piece is different; many are finished with brass.</p>
+            <p><a class="mat-more" href="horn/">Buffalo horn range →</a></p>
             <div class="thumbs"><div><img src="assets/img/horn-bowl-amber-600.webp" srcset="assets/img/horn-bowl-amber-300.webp 300w, assets/img/horn-bowl-amber-600.webp 600w, assets/img/horn-bowl-amber-1200.webp 1200w" sizes="90px" width="1200" height="869" alt="Amber horn bowl" loading="lazy" decoding="async"></div><div><img src="assets/img/horn-plate-rings-600.webp" srcset="assets/img/horn-plate-rings-300.webp 300w, assets/img/horn-plate-rings-600.webp 600w, assets/img/horn-plate-rings-1200.webp 602w" sizes="90px" width="602" height="602" alt="Horn plate with ring pattern" loading="lazy" decoding="async"></div><div><img src="assets/img/horn-bowl-gold-swirl-600.webp" srcset="assets/img/horn-bowl-gold-swirl-300.webp 300w, assets/img/horn-bowl-gold-swirl-600.webp 544w" sizes="90px" width="544" height="477" alt="Patterned horn bowl" loading="lazy" decoding="async"></div></div></div>
         </article>
         <article class="mat">
           <div class="stage"><img src="assets/img/bone-inlay-tray-stars-600.webp" srcset="assets/img/bone-inlay-tray-stars-300.webp 300w, assets/img/bone-inlay-tray-stars-600.webp 600w, assets/img/bone-inlay-tray-stars-1200.webp 1200w" sizes="(max-width:980px) 70vw, 300px" width="1200" height="688" alt="Black and white bone inlay tray" loading="lazy" decoding="async"></div>
           <div class="body"><h3>Bone inlay</h3><p>Bone, also a by-product of cattle farming, set by hand one piece at a time into patterns — trays, boxes and more.</p>
+            <p><a class="mat-more" href="bone-inlay/">Bone inlay range →</a></p>
             <div class="thumbs"><div><img src="assets/img/bone-inlay-box-floral-600.webp" srcset="assets/img/bone-inlay-box-floral-300.webp 300w, assets/img/bone-inlay-box-floral-600.webp 537w" sizes="140px" width="537" height="360" alt="Floral bone inlay box" loading="lazy" decoding="async"></div><div><img src="assets/img/bone-inlay-box-cubes-600.webp" srcset="assets/img/bone-inlay-box-cubes-300.webp 300w, assets/img/bone-inlay-box-cubes-600.webp 484w" sizes="140px" width="484" height="326" alt="Geometric bone inlay box" loading="lazy" decoding="async"></div></div></div>
         </article>
         <article class="mat">
           <div class="stage"><img src="assets/img/mop-bird-platter-600.webp" srcset="assets/img/mop-bird-platter-300.webp 300w, assets/img/mop-bird-platter-600.webp 600w, assets/img/mop-bird-platter-1200.webp 1200w" sizes="(max-width:980px) 70vw, 300px" width="1200" height="643" alt="Mother-of-pearl dish carved as a bird" loading="lazy" decoding="async"></div>
           <div class="body"><h3>Mother-of-pearl &amp; shell</h3><p>The natural shimmer of shell — cut, carved into birds and flowers, and inlaid into dishes and serveware.</p>
+            <p><a class="mat-more" href="mother-of-pearl/">Mother-of-pearl range →</a> <a class="mat-more" href="seashell/">Seashell →</a></p>
             <div class="thumbs"><div><img src="assets/img/mop-dish-jewels-600.webp" srcset="assets/img/mop-dish-jewels-300.webp 300w, assets/img/mop-dish-jewels-600.webp 600w, assets/img/mop-dish-jewels-1200.webp 755w" sizes="90px" width="755" height="398" alt="Mother-of-pearl dish set with stones" loading="lazy" decoding="async"></div><div><img src="assets/img/mop-flower-dish-600.webp" srcset="assets/img/mop-flower-dish-300.webp 235w, assets/img/mop-flower-dish-600.webp 470w, assets/img/mop-flower-dish-1200.webp 941w" sizes="90px" width="941" height="1200" alt="Carved mother-of-pearl flower dish" loading="lazy" decoding="async"></div><div><img src="assets/img/mop-plate-silver-600.webp" srcset="assets/img/mop-plate-silver-300.webp 154w, assets/img/mop-plate-silver-600.webp 307w, assets/img/mop-plate-silver-1200.webp 615w" sizes="90px" width="615" height="1200" alt="Mother-of-pearl dish with metal trim" loading="lazy" decoding="async"></div></div></div>
         </article>
       </div>
-      <ul class="also"><li class="k">Also</li><li>Brass details</li><li>Resin &amp; terrazzo</li></ul>
+      <ul class="also"><li class="k">Also</li><li>Brass details</li><li><a href="resin/">Resin &amp; terrazzo</a></li></ul>
     </div>
   </section>
 
@@ -662,15 +678,15 @@ html.lb-open{overflow:hidden}
         <p class="lede">Serveware to small furniture, all handmade from the same natural materials. Tell us the category you buy and we'll send what fits.</p>
       </div>
       <ul class="cats">
-        <li><a href="#enquire"><span class="cat-ph"><img src="assets/img/cat-horn-bowl-600.webp" srcset="assets/img/cat-horn-bowl-300.webp 300w, assets/img/cat-horn-bowl-600.webp 600w" sizes="(max-width:900px) 40vw, 280px" width="600" height="467" alt="Horn bowl with inlaid shell dots" loading="lazy" decoding="async"></span><b>Horn bowls &amp; trays</b><small>Natural, two-tone, inlaid and brass-finished</small></a></li>
-        <li><a href="#enquire"><span class="cat-ph"><img src="assets/img/cat-servers-600.webp" srcset="assets/img/cat-servers-300.webp 300w, assets/img/cat-servers-600.webp 600w" sizes="(max-width:900px) 40vw, 280px" width="600" height="245" alt="Horn salad servers with bone inlay handles" loading="lazy" decoding="async"></span><b>Cutlery &amp; serveware</b><small>Spoons, forks, knives and servers in horn, shell and wood</small></a></li>
-        <li><a href="#enquire"><span class="cat-ph"><img src="assets/img/cat-bone-box-600.webp" srcset="assets/img/cat-bone-box-300.webp 300w, assets/img/cat-bone-box-600.webp 600w" sizes="(max-width:900px) 40vw, 280px" width="600" height="265" alt="Striped bone inlay box" loading="lazy" decoding="async"></span><b>Bone inlay boxes &amp; trays</b><small>Floral, geometric and striped patterns</small></a></li>
-        <li><a href="#enquire"><span class="cat-ph"><img src="assets/img/cat-shell-sp-600.webp" srcset="assets/img/cat-shell-sp-300.webp 300w, assets/img/cat-shell-sp-600.webp 600w" sizes="(max-width:900px) 40vw, 280px" width="600" height="368" alt="Heart-shaped mother-of-pearl salt and pepper set" loading="lazy" decoding="async"></span><b>Shell &amp; mother-of-pearl</b><small>Dishes, trays, pill boxes, salt &amp; pepper sets</small></a></li>
-        <li><a href="#enquire"><span class="cat-ph"><img src="assets/img/cat-resin-box-600.webp" srcset="assets/img/cat-resin-box-300.webp 300w, assets/img/cat-resin-box-600.webp 600w" sizes="(max-width:900px) 40vw, 280px" width="600" height="461" alt="Checkerboard resin and bone boxes" loading="lazy" decoding="async"></span><b>Resin &amp; terrazzo</b><small>Faux horn, terrazzo and coloured resin</small></a></li>
-        <li><a href="#enquire"><span class="cat-ph"><img src="assets/img/cat-magnifier-600.webp" srcset="assets/img/cat-magnifier-300.webp 300w, assets/img/cat-magnifier-600.webp 600w" sizes="(max-width:900px) 40vw, 280px" width="600" height="248" alt="Magnifying glass with a shell and filigree handle" loading="lazy" decoding="async"></span><b>Magnifiers &amp; desk pieces</b><small>Shell and horn handles, pen holders, paperweights</small></a></li>
-        <li><a href="#enquire"><span class="cat-ph"><img src="assets/img/cat-napkin-ring-600.webp" srcset="assets/img/cat-napkin-ring-300.webp 300w, assets/img/cat-napkin-ring-600.webp 600w" sizes="(max-width:900px) 40vw, 280px" width="600" height="327" alt="Shell napkin ring with a rope loop" loading="lazy" decoding="async"></span><b>Napkin rings &amp; table accessories</b><small>Shell, horn and bone — also key rings and small boxes</small></a></li>
-        <li><a href="#enquire"><span class="cat-ph"><img src="assets/img/cat-comb-600.webp" srcset="assets/img/cat-comb-300.webp 300w, assets/img/cat-comb-600.webp 600w" sizes="(max-width:900px) 40vw, 280px" width="351" height="357" alt="Heart-shaped horn comb" loading="lazy" decoding="async"></span><b>Combs &amp; hair accessories</b><small>Horn, bone and brass</small></a></li>
-        <li><a href="#enquire"><span class="cat-ph"><img src="assets/img/cat-stool-600.webp" srcset="assets/img/cat-stool-300.webp 300w, assets/img/cat-stool-600.webp 600w" sizes="(max-width:900px) 40vw, 280px" width="282" height="444" alt="Round stool with a mother-of-pearl top" loading="lazy" decoding="async"></span><b>Stools &amp; small furniture</b><small>Bone, shell, horn and marble tops — made to order</small></a></li>
+        <li><a href="horn/"><span class="cat-ph"><img src="assets/img/cat-horn-bowl-600.webp" srcset="assets/img/cat-horn-bowl-300.webp 300w, assets/img/cat-horn-bowl-600.webp 600w" sizes="(max-width:900px) 40vw, 280px" width="600" height="467" alt="Horn bowl with inlaid shell dots" loading="lazy" decoding="async"></span><b>Horn bowls &amp; trays</b><small>Natural, two-tone, inlaid and brass-finished</small></a></li>
+        <li><a href="horn/"><span class="cat-ph"><img src="assets/img/cat-servers-600.webp" srcset="assets/img/cat-servers-300.webp 300w, assets/img/cat-servers-600.webp 600w" sizes="(max-width:900px) 40vw, 280px" width="600" height="245" alt="Horn salad servers with bone inlay handles" loading="lazy" decoding="async"></span><b>Cutlery &amp; serveware</b><small>Spoons, forks, knives and servers in horn, shell and wood</small></a></li>
+        <li><a href="bone-inlay/"><span class="cat-ph"><img src="assets/img/cat-bone-box-600.webp" srcset="assets/img/cat-bone-box-300.webp 300w, assets/img/cat-bone-box-600.webp 600w" sizes="(max-width:900px) 40vw, 280px" width="600" height="265" alt="Striped bone inlay box" loading="lazy" decoding="async"></span><b>Bone inlay boxes &amp; trays</b><small>Floral, geometric and striped patterns</small></a></li>
+        <li><a href="mother-of-pearl/"><span class="cat-ph"><img src="assets/img/cat-shell-sp-600.webp" srcset="assets/img/cat-shell-sp-300.webp 300w, assets/img/cat-shell-sp-600.webp 600w" sizes="(max-width:900px) 40vw, 280px" width="600" height="368" alt="Heart-shaped mother-of-pearl salt and pepper set" loading="lazy" decoding="async"></span><b>Shell &amp; mother-of-pearl</b><small>Dishes, trays, pill boxes, salt &amp; pepper sets</small></a></li>
+        <li><a href="resin/"><span class="cat-ph"><img src="assets/img/cat-resin-box-600.webp" srcset="assets/img/cat-resin-box-300.webp 300w, assets/img/cat-resin-box-600.webp 600w" sizes="(max-width:900px) 40vw, 280px" width="600" height="461" alt="Checkerboard resin and bone boxes" loading="lazy" decoding="async"></span><b>Resin &amp; terrazzo</b><small>Faux horn, terrazzo and coloured resin</small></a></li>
+        <li><a href="seashell/"><span class="cat-ph"><img src="assets/img/cat-magnifier-600.webp" srcset="assets/img/cat-magnifier-300.webp 300w, assets/img/cat-magnifier-600.webp 600w" sizes="(max-width:900px) 40vw, 280px" width="600" height="248" alt="Magnifying glass with a shell and filigree handle" loading="lazy" decoding="async"></span><b>Magnifiers &amp; desk pieces</b><small>Shell and horn handles, pen holders, paperweights</small></a></li>
+        <li><a href="seashell/"><span class="cat-ph"><img src="assets/img/cat-napkin-ring-600.webp" srcset="assets/img/cat-napkin-ring-300.webp 300w, assets/img/cat-napkin-ring-600.webp 600w" sizes="(max-width:900px) 40vw, 280px" width="600" height="327" alt="Shell napkin ring with a rope loop" loading="lazy" decoding="async"></span><b>Napkin rings &amp; table accessories</b><small>Shell, horn and bone — also key rings and small boxes</small></a></li>
+        <li><a href="horn/"><span class="cat-ph"><img src="assets/img/cat-comb-600.webp" srcset="assets/img/cat-comb-300.webp 300w, assets/img/cat-comb-600.webp 600w" sizes="(max-width:900px) 40vw, 280px" width="351" height="357" alt="Heart-shaped horn comb" loading="lazy" decoding="async"></span><b>Combs &amp; hair accessories</b><small>Horn, bone and brass</small></a></li>
+        <li><a href="mother-of-pearl/"><span class="cat-ph"><img src="assets/img/cat-stool-600.webp" srcset="assets/img/cat-stool-300.webp 300w, assets/img/cat-stool-600.webp 600w" sizes="(max-width:900px) 40vw, 280px" width="282" height="444" alt="Round stool with a mother-of-pearl top" loading="lazy" decoding="async"></span><b>Stools &amp; small furniture</b><small>Bone, shell, horn and marble tops — made to order</small></a></li>
       </ul>
       <p class="range-also">Also incense holders, glass boxes, wooden pieces and brass accents — ask us.</p>
     </div>
@@ -761,7 +777,7 @@ html.lb-open{overflow:hidden}
           <li><b>Autumn 2025</b>Hall 16, J-01/11</li>
           <li><b>Spring 2026</b>Hall 11, G10/29</li>
           <li><b>Autumn 2026</b>Hall 3, E-06/05</li>
-          <li class="next"><b>Next edition</b>Ask us for dates and stand</li>
+          <li class="next"><b>Spring 2027 · 15–19 March 2027</b>India Expo Centre and Mart, Greater Noida. Write to us for our stand.</li>
         </ul>
         <div class="cta-row">
           <a class="btn btn-ink fair-before" href="#enquire" data-intent="meeting"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>Book a meeting at the fair</a>
@@ -878,11 +894,13 @@ html.lb-open{overflow:hidden}
       <div>
         <h2 class="foot-h">Explore</h2>
         <ul>
-          <li><a href="#story">Why us</a></li>
-          <li><a href="#materials">Materials</a></li>
-          <li><a href="#range">What we make</a></li>
-          <li><a href="#collection">Collection</a></li>
-          <li><a href="#how">How it works</a></li>
+          <li><a href="horn/">Buffalo horn</a></li>
+          <li><a href="bone-inlay/">Bone inlay</a></li>
+          <li><a href="mother-of-pearl/">Mother-of-pearl</a></li>
+          <li><a href="seashell/">Seashell</a></li>
+          <li><a href="resin/">Resin &amp; terrazzo</a></li>
+          <li><a href="trade/">How we trade</a></li>
+          <li><a href="about/">About us</a></li>
           <li><a href="#enquire">Contact</a></li>
         </ul>
         

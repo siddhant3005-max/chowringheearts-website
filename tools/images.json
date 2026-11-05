@@ -1,0 +1,424 @@
+{
+ "horn-bowls-trio": {
+  "src": "horn-bowls-trio-1200.webp",
+  "sizes": [
+   [
+    480,
+    289
+   ],
+   [
+    960,
+    578
+   ],
+   [
+    1188,
+    715
+   ]
+  ]
+ },
+ "horn-bowl-two-tone": {
+  "src": "horn-bowl-two-tone-600.webp",
+  "sizes": [
+   [
+    470,
+    482
+   ]
+  ]
+ },
+ "horn-bowl-amber": {
+  "src": "horn-bowl-amber-1200.webp",
+  "sizes": [
+   [
+    480,
+    348
+   ],
+   [
+    960,
+    695
+   ],
+   [
+    1200,
+    869
+   ]
+  ]
+ },
+ "horn-bowl-brass-stripes": {
+  "src": "horn-bowl-brass-stripes-1200.webp",
+  "sizes": [
+   [
+    480,
+    368
+   ],
+   [
+    960,
+    735
+   ],
+   [
+    1200,
+    919
+   ]
+  ]
+ },
+ "horn-bowl-dots": {
+  "src": "horn-bowl-dots-1200.webp",
+  "sizes": [
+   [
+    480,
+    354
+   ],
+   [
+    960,
+    708
+   ],
+   [
+    1200,
+    885
+   ]
+  ]
+ },
+ "horn-bowl-gold-swirl": {
+  "src": "horn-bowl-gold-swirl-600.webp",
+  "sizes": [
+   [
+    480,
+    421
+   ],
+   [
+    544,
+    477
+   ]
+  ]
+ },
+ "horn-plate-rings": {
+  "src": "horn-plate-rings-1200.webp",
+  "sizes": [
+   [
+    480,
+    480
+   ],
+   [
+    602,
+    602
+   ]
+  ]
+ },
+ "horn-tray-brass-swirl": {
+  "src": "horn-tray-brass-swirl-1200.webp",
+  "sizes": [
+   [
+    480,
+    460
+   ],
+   [
+    960,
+    919
+   ],
+   [
+    1200,
+    1149
+   ]
+  ]
+ },
+ "horn-spoon-diag": {
+  "src": "horn-spoon-diag-1200.webp",
+  "sizes": [
+   [
+    480,
+    557
+   ],
+   [
+    960,
+    1113
+   ],
+   [
+    977,
+    1133
+   ]
+  ]
+ },
+ "cat-horn-bowl": {
+  "src": "cat-horn-bowl-600.webp",
+  "sizes": [
+   [
+    480,
+    374
+   ],
+   [
+    600,
+    467
+   ]
+  ]
+ },
+ "cat-servers": {
+  "src": "cat-servers-600.webp",
+  "sizes": [
+   [
+    480,
+    196
+   ],
+   [
+    600,
+    245
+   ]
+  ]
+ },
+ "cat-comb": {
+  "src": "cat-comb-600.webp",
+  "sizes": [
+   [
+    351,
+    357
+   ]
+  ]
+ },
+ "bone-inlay-tray-stars": {
+  "src": "bone-inlay-tray-stars-1200.webp",
+  "sizes": [
+   [
+    480,
+    275
+   ],
+   [
+    960,
+    550
+   ],
+   [
+    1200,
+    688
+   ]
+  ]
+ },
+ "bone-inlay-box-floral": {
+  "src": "bone-inlay-box-floral-1200.webp",
+  "sizes": [
+   [
+    480,
+    322
+   ],
+   [
+    537,
+    360
+   ]
+  ]
+ },
+ "bone-inlay-box-cubes": {
+  "src": "bone-inlay-box-cubes-600.webp",
+  "sizes": [
+   [
+    480,
+    323
+   ],
+   [
+    484,
+    326
+   ]
+  ]
+ },
+ "cat-bone-box": {
+  "src": "cat-bone-box-600.webp",
+  "sizes": [
+   [
+    480,
+    212
+   ],
+   [
+    600,
+    265
+   ]
+  ]
+ },
+ "cat-resin-box": {
+  "src": "cat-resin-box-600.webp",
+  "sizes": [
+   [
+    480,
+    369
+   ],
+   [
+    600,
+    461
+   ]
+  ]
+ },
+ "mop-bird-platter": {
+  "src": "mop-bird-platter-1200.webp",
+  "sizes": [
+   [
+    480,
+    257
+   ],
+   [
+    960,
+    514
+   ],
+   [
+    1200,
+    643
+   ]
+  ]
+ },
+ "mop-bird-dish": {
+  "src": "mop-bird-dish-1200.webp",
+  "sizes": [
+   [
+    480,
+    944
+   ],
+   [
+    610,
+    1200
+   ]
+  ]
+ },
+ "mop-dish-jewels": {
+  "src": "mop-dish-jewels-1200.webp",
+  "sizes": [
+   [
+    480,
+    253
+   ],
+   [
+    755,
+    398
+   ]
+  ]
+ },
+ "mop-flower-dish": {
+  "src": "mop-flower-dish-1200.webp",
+  "sizes": [
+   [
+    480,
+    612
+   ],
+   [
+    941,
+    1200
+   ]
+  ]
+ },
+ "mop-oval-dish": {
+  "src": "mop-oval-dish-1200.webp",
+  "sizes": [
+   [
+    480,
+    232
+   ],
+   [
+    960,
+    464
+   ],
+   [
+    1200,
+    580
+   ]
+  ]
+ },
+ "mop-plate-silver": {
+  "src": "mop-plate-silver-1200.webp",
+  "sizes": [
+   [
+    480,
+    937
+   ],
+   [
+    615,
+    1200
+   ]
+  ]
+ },
+ "mop-spoon-diag": {
+  "src": "mop-spoon-diag-1200.webp",
+  "sizes": [
+   [
+    480,
+    612
+   ],
+   [
+    891,
+    1136
+   ]
+  ]
+ },
+ "cat-shell-sp": {
+  "src": "cat-shell-sp-600.webp",
+  "sizes": [
+   [
+    480,
+    294
+   ],
+   [
+    600,
+    368
+   ]
+  ]
+ },
+ "cat-stool": {
+  "src": "cat-stool-600.webp",
+  "sizes": [
+   [
+    282,
+    444
+   ]
+  ]
+ },
+ "cat-napkin-ring": {
+  "src": "cat-napkin-ring-600.webp",
+  "sizes": [
+   [
+    480,
+    262
+   ],
+   [
+    600,
+    327
+   ]
+  ]
+ },
+ "cat-magnifier": {
+  "src": "cat-magnifier-600.webp",
+  "sizes": [
+   [
+    480,
+    198
+   ],
+   [
+    600,
+    248
+   ]
+  ]
+ },
+ "stand-front": {
+  "src": "stand-front-1024.webp",
+  "sizes": [
+   [
+    480,
+    360
+   ],
+   [
+    960,
+    720
+   ],
+   [
+    1024,
+    768
+   ]
+  ]
+ },
+ "stand-shelves": {
+  "src": "stand-shelves-1440.webp",
+  "sizes": [
+   [
+    480,
+    397
+   ],
+   [
+    960,
+    795
+   ],
+   [
+    1440,
+    1192
+   ]
+  ]
+ }
+}

@@ -1,5 +1,9 @@
+# Chowringhee Arts: https://chowringheearts.com/
+# Search engines and AI assistants are welcome to read every public page
+# (Googlebot, Bingbot, GPTBot, OAI-SearchBot, ChatGPT-User, ClaudeBot, Claude-SearchBot, Claude-User,
+# PerplexityBot, Perplexity-User, Google-Extended, Applebot and others). Nothing here blocks them.
 User-agent: *
 Allow: /
-Disallow: /review/
 Disallow: /tools/
+
 Sitemap: https://chowringheearts.com/sitemap.xml

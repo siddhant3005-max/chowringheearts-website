@@ -4,6 +4,10 @@
 @font-face{font-family:"Cormorant Garamond";font-style:normal;font-weight:500;font-display:swap;src:url(/assets/fonts/cormorant-garamond-latin-500-normal.woff2) format("woff2")}
 @font-face{font-family:"Cormorant Garamond";font-style:italic;font-weight:500;font-display:swap;src:url(/assets/fonts/cormorant-garamond-latin-500-italic.woff2) format("woff2")}
 @font-face{font-family:"Cormorant Garamond";font-style:normal;font-weight:600;font-display:swap;src:url(/assets/fonts/cormorant-garamond-latin-600-normal.woff2) format("woff2")}
+@font-face{font-family:"Poppins Fallback";font-weight:100 500;src:local("Arial"),local("Liberation Sans");size-adjust:112.4%;ascent-override:93.4%;descent-override:31.1%;line-gap-override:8.9%}
+@font-face{font-family:"Poppins Fallback";font-weight:600 900;src:local("Arial Bold"),local("Arial-BoldMT"),local("Liberation Sans Bold");size-adjust:106.3%;ascent-override:98.8%;descent-override:32.9%;line-gap-override:9.4%}
+@font-face{font-family:"Cormorant Fallback";font-style:normal;src:local("Times New Roman"),local("Liberation Serif");size-adjust:97%;ascent-override:95%;descent-override:30%;line-gap-override:0%}
+@font-face{font-family:"Cormorant Fallback";font-style:italic;src:local("Times New Roman Italic"),local("TimesNewRomanPS-ItalicMT"),local("Liberation Serif Italic");size-adjust:88.6%;ascent-override:104%;descent-override:33%;line-gap-override:0%}
 
 :root{
   --navy:#14183F; --navy-2:#1B2055; --ink:#2E3192; --ink-deep:#1D1E5C;
@@ -11,8 +15,8 @@
   --paper:#FAF5EB; --paper-2:#F2E9D7; --card:#FFFCF6;
   --gold-hi:#F0D594; --gold:#D3A24E; --gold-lo:#B98A3E; --gold-ink:#86602A;
   --line:rgba(46,49,146,.13); --line-2:rgba(46,49,146,.24); --line-navy:rgba(240,213,148,.18);
-  --serif:"Cormorant Garamond",Georgia,"Times New Roman",serif;
-  --sans:"Poppins",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --serif:"Cormorant Garamond","Cormorant Fallback",Georgia,"Times New Roman",serif;
+  --sans:"Poppins","Poppins Fallback",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
   --maxw:1200px; --gutter:clamp(16px,4vw,44px); --head:76px;
   --pattern:url(/assets/pattern-leaf.svg);
 }
@@ -138,7 +142,7 @@ section{position:relative;padding:clamp(72px,9vw,128px) 0}
 .past-list{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:12px 36px}
 .past-list li{position:relative;padding-left:20px;font-size:15px;line-height:1.4;color:var(--muted)}
 .past-list li::before{content:"";position:absolute;left:0;top:.5em;width:10px;height:10px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 3px rgba(211,162,78,.22)}
-.past-list li.next-step::before{background:transparent;border:2px solid var(--gold);box-shadow:none;box-sizing:border-box}
+.past-list li.next::before{background:transparent;border:2px solid var(--gold);box-shadow:none;box-sizing:border-box}
 .past-list b{display:block;color:var(--ink-deep);font-weight:500}
 @media (max-width:900px){.fair-gallery{grid-template-columns:1fr}.stand-photo{aspect-ratio:4/3}.stand-photo.tall{aspect-ratio:16/10}.fair-foot{align-items:flex-start;flex-direction:column}}
 .enq-side{display:grid;gap:14px}
@@ -240,10 +244,10 @@ a.c-card:hover{border-color:var(--gold);transform:translateY(-2px)}
 .next-step{position:relative;padding:clamp(26px,4vw,48px);border-radius:30px;background:var(--navy);color:var(--on-navy);overflow:hidden}
 .next-step::before{content:"";position:absolute;inset:0;background-image:var(--pattern);background-size:180px 180px;opacity:.05;pointer-events:none}
 .next-step>*{position:relative}
-.next h2{color:#fff;margin-bottom:14px}
-.next p{color:var(--on-navy-muted);max-width:40em}
-.next .cta-row{margin-top:24px}
-.next .btn-line{color:var(--on-navy)}
+.next-step h2{color:#fff;margin-bottom:14px}
+.next-step p{color:var(--on-navy-muted);max-width:40em}
+.next-step .cta-row{margin:24px 0 20px}
+.next-step .btn-line{color:var(--on-navy)}
 .mat-links{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 @media (max-width:900px){.mat-links{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:420px){.mat-links{grid-template-columns:1fr}}
@@ -260,4 +264,4 @@ a.c-card:hover{border-color:var(--gold);transform:translateY(-2px)}
 .foot-cols{grid-template-columns:1fr 1fr 1fr}
 @media (max-width:640px){.foot-cols{grid-template-columns:1fr 1fr}}
 @media (max-width:420px){.foot-cols{grid-template-columns:1fr}}
-@media (max-width:480px){.cta-row .btn{white-space:normal;text-align:center;line-height:1.3;padding:12px 20px;max-width:100%}.next{padding:24px 18px}}
+@media (max-width:480px){.cta-row .btn{white-space:normal;text-align:center;line-height:1.3;padding:12px 20px;max-width:100%}.next-step{padding:24px 18px}}

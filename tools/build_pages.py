@@ -15,7 +15,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = 'https://chowringheearts.com'
 EMAIL = 'info@chowringheearts.com'
 WA = '919830922999'
-LASTMOD = '2026-11-05'
+LASTMOD = '2026-11-16'
 IMG = json.load(open(os.path.join(ROOT, 'tools', 'images.json')))
 
 def e(s):
@@ -38,6 +38,7 @@ def pic(i, alt, sizes, eager=False):
 I_MAIL = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4 7 8 6 8-6"/></svg>'
 I_WA = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 12a8 8 0 0 1-11.7 7.1L4 20l1-4.1A8 8 0 1 1 20 12Z"/><path d="M9 10.5h6M9 13.5h4"/></svg>'
 I_MENU = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"/></svg>'
+I_FORM = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="5" y="3.5" width="14" height="17" rx="2.5"/><path d="M9 8.5h6M9 12h6M9 15.5h4"/></svg>'
 
 def mailto(subject, body):
     return f'mailto:{EMAIL}?subject={quote(subject)}&amp;body={quote(body)}'
@@ -45,9 +46,13 @@ def mailto(subject, body):
 def wa(text):
     return f'https://wa.me/{WA}?text={quote(text)}'
 
-def ctas(p, cls='cta-row'):
+def ctas(p, cls='cta-row', form=False):
+    link = ''
+    if form:
+        q = f'?interest={p["slug"]}' if p['slug'] in ('horn', 'bone-inlay', 'mother-of-pearl', 'seashell', 'resin') else ''
+        link = f'<a class="btn btn-line" href="/{q}#enquire">{I_FORM}Use the enquiry form</a>'
     return (f'<div class="{cls}"><a class="btn btn-gold" href="{mailto(p["mail_subject"], MAIL_BODY)}">{I_MAIL}Email info@chowringheearts.com</a>'
-            f'<a class="btn btn-line" href="{wa(p["wa_text"])}" target="_blank" rel="noopener">{I_WA}WhatsApp +91 98309 22999</a></div>')
+            f'<a class="btn btn-line" href="{wa(p["wa_text"])}" target="_blank" rel="noopener">{I_WA}WhatsApp +91 98309 22999</a>{link}</div>')
 
 MAIL_BODY = ('Hello Chowringhee Arts,\n\nPieces I am interested in:\n\nQuantity per design:\n\n'
              'Company and country:\n\nMy market (importer, wholesaler, retail chain, hotel supplier, buying agent):\n')
@@ -70,10 +75,11 @@ ORG = {
     'address': {'@type': 'PostalAddress', 'streetAddress': '75C Park Street', 'addressLocality': 'Kolkata',
                 'postalCode': '700016', 'addressRegion': 'West Bengal', 'addressCountry': 'IN'},
     'contactPoint': {'@type': 'ContactPoint', 'contactType': 'sales', 'email': EMAIL, 'telephone': '+91-98309-22999'},
+    'founder': {'@type': 'Person', 'name': 'Siddhant Chandan', 'jobTitle': 'Proprietor'},
     'memberOf': {'@type': 'Organization', 'name': 'Export Promotion Council for Handicrafts (EPCH)'},
     'description': ('Kolkata export house, in business for 10 years, making handmade homeware in buffalo horn, '
                     'bone inlay, mother-of-pearl, seashell and resin for trade buyers. Horn and bone are by-products '
-                    'of cattle farming; no animal is harmed for its products.'),
+                    'of livestock farming; no animal is harmed for its products.'),
 }
 
 def jsonld(p):
@@ -82,6 +88,12 @@ def jsonld(p):
     if p['path'] != '/':
         crumbs.append({'@type': 'ListItem', 'position': 2, 'name': p['crumb'], 'item': SITE + p['path']})
     graph.append({'@type': 'BreadcrumbList', 'itemListElement': crumbs})
+    if p.get('gallery'):
+        graph.append({'@type': 'ItemList', '@id': SITE + p['path'] + '#gallery', 'name': html.unescape(p['crumb']) + ' pieces',
+                      'numberOfItems': len(p['gallery']),
+                      'itemListElement': [{'@type': 'ListItem', 'position': n, 'name': f'{t} — {sub}' if sub else t,
+                                           'image': f"{SITE}/assets/img/p/{i}-{IMG[i]['sizes'][-1][0]}.jpg"}
+                                          for n, (i, t, sub) in enumerate(p['gallery'], 1)]})
     if p.get('faq'):
         graph.append({'@type': 'FAQPage', 'mainEntity': [
             {'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': a_plain}}
@@ -93,7 +105,7 @@ def head(p):
     canon = SITE + p['path']
     og = p.get('og', 'og-v3.jpg')
     robots = '<meta name="robots" content="noindex">\n' if p.get('noindex') else ''
-    canon_tag = '' if p.get('noindex') else f'<link rel="canonical" href="{canon}">\n'
+    canon_tag = '' if p.get('noindex') else f'<link rel="canonical" href="{canon}">\n<meta name="robots" content="max-image-preview:large">\n'
     preload = ''
     if p.get('hero_img'):
         i = p['hero_img']
@@ -259,12 +271,12 @@ def faq_html(items):
 def next_step(p):
     return f'''  <section id="enquire" class="band" aria-labelledby="next-title">
     <div class="wrap">
-      <div class="next on-navy">
+      <div class="next-step on-navy">
         <p class="eyebrow">Next step</p>
         <h2 id="next-title">{p["next_h"]}</h2>
         <p>{p["next_p"]}</p>
-        {ctas(p)}
-        <p>Office: 75C Park Street, Kolkata 700016, India. We reply with photos, sizes and ex-works prices for the pieces you ask about.</p>
+        {ctas(p, form=True)}
+        <p>Office: 75C Park Street, Kolkata 700016, India. Siddhant Chandan, Proprietor. We reply within 24 hours, 7 days a week, with photos, sizes and ex-works prices for the pieces you ask about.</p>
       </div>
     </div>
   </section>
@@ -302,7 +314,7 @@ def faq_common(material_q, material_a, custom_a):
          'Tell us how your market needs goods packed and labelled when you enquire, and we will confirm it with the quote.'),
         (material_q, material_a),
         ('Do you send a price list or catalogue?',
-         'No. We sell to the trade only and do not publish prices or send full catalogues. Tell us the pieces you are interested in and we send photos, sizes and ex-works Kolkata prices for those.'),
+         'We quote for the pieces you ask about rather than sending a full catalogue: tell us what interests you and we send photos, sizes and ex-works Kolkata prices for those.'),
     ]
     return [(q, e(a), a) for q, a in raw]
 
@@ -331,7 +343,7 @@ PAGES.append(dict(
     hero_cap='Horn bowls — natural, dotted and brass-striped',
     hero_facts=['Real buffalo horn', 'Handmade', 'Ex-works Kolkata', 'Ready 30–45 days'],
     mail_subject='Buffalo horn enquiry', wa_text='Hello Chowringhee Arts, I am interested in your buffalo horn pieces.',
-    make_lede='Horn is our largest range. These are the kinds of piece we make; we send photos and sizes of current designs when you tell us what you need.',
+    make_lede='Horn is our lead range. These are the kinds of piece we make; we send photos and sizes of current designs when you tell us what you need.',
     make=[('Bowls', 'Natural, two-tone, dotted, striped and amber horn; some inlaid with shell dots, many finished with brass.'),
           ('Trays and plates', 'Horn trays and plates, including a swirl-pattern tray and a plate with a ring pattern.'),
           ('Spoons and servers', 'Long-handled horn spoons and salad servers, including servers with bone inlay handles.'),
@@ -339,7 +351,7 @@ PAGES.append(dict(
           ('Combs', 'Horn combs, including a heart-shaped comb, and other hair accessories in horn, bone and brass.'),
           ('Desk and table pieces', 'Magnifiers and other desk pieces with horn handles, and horn napkin rings.')],
     made_h='How horn is <em>made and finished</em>',
-    made=['<p>We use <strong>real buffalo horn</strong>, a by-product of cattle farming. It is real horn, never faux, and no animal is harmed for our products.</p>',
+    made=['<p>We use <strong>real buffalo horn</strong>, a by-product of livestock farming. It is real horn, never faux, and no animal is harmed for our products.</p>',
           '<p>Each piece is cut, shaped and polished by hand by our karigars until the natural grain shows. Some pieces are then inlaid, for example with shell dots, and many are finished with brass.</p>',
           '<p>Natural horn has its own grain and colour, from dark to amber to two-tone, so no two pieces are exactly the same. Expect the grain and pattern to vary a little across an order.</p>'],
     sizes_rows=[('Sizes', 'We send sizes with photos and prices for the pieces you ask about. Custom sizes are made to your specification.'),
@@ -357,7 +369,7 @@ PAGES.append(dict(
              ('horn-bowl-gold-swirl', 'Patterned horn bowl', ''),
              ('cat-comb', 'Heart-shaped horn comb', '')],
     faq=faq_common('Where does the horn come from?',
-                   'It is real buffalo horn, never faux. The horn is a by-product of cattle farming and no animal is harmed for our products.',
+                   'It is real buffalo horn, never faux. The horn is a by-product of livestock farming and no animal is harmed for our products.',
                    'Yes. We make sizes, colours and finishes to your specification, including brass finishes. Send a drawing, photo or reference piece with the quantity.'),
     next_h='Tell us which horn pieces <em>you need.</em>',
     next_p='Write to us or send a WhatsApp message with the pieces you are interested in (a photo or a description is enough), the quantity per design and your market. We reply with photos, sizes and ex-works prices for those pieces.',
@@ -375,7 +387,7 @@ PAGES.append(dict(
     lede='Boxes and trays inlaid by hand with small pieces of bone, in floral, geometric and striped patterns. Made for importers, wholesalers, retail chains and buying agents.',
     hero_img='bone-inlay-tray-stars', hero_alt='Close-up of a bone inlay tray: small pieces of bone set by hand into a pattern of stars and moons',
     hero_cap='Bone inlay, set by hand',
-    hero_facts=['Set by hand', 'Bone from cattle farming', 'Custom colours', 'Ready 30–45 days'],
+    hero_facts=['Set by hand', 'Bone from livestock farming', 'Custom colours', 'Ready 30–45 days'],
     mail_subject='Bone inlay enquiry', wa_text='Hello Chowringhee Arts, I am interested in your bone inlay pieces.',
     make_lede='Bone inlay suits boxes, trays and anything with a flat surface to decorate. These are the kinds of piece we make.',
     make=[('Boxes', 'Bone inlay boxes in floral, geometric and striped patterns, including checkerboard boxes in resin and bone.'),
@@ -385,7 +397,7 @@ PAGES.append(dict(
           ('Table accessories', 'Napkin rings, key rings and small boxes in bone, horn and shell.'),
           ('Combs', 'Combs and hair accessories in horn, bone and brass.')],
     made_h='How bone inlay is <em>made</em>',
-    made=['<p>The bone we use is a <strong>by-product of cattle farming</strong>: material that would otherwise go to waste. No animal is harmed for our products.</p>',
+    made=['<p>The bone we use is a <strong>by-product of livestock farming</strong>: material that would otherwise go to waste. No animal is harmed for our products.</p>',
           '<p>Our karigars cut the bone into small pieces and set them by hand, one piece at a time, into the pattern.</p>',
           '<p>Because every piece is set by hand, small differences in the pattern from one box or tray to the next are normal.</p>'],
     sizes_rows=[('Sizes', 'We send sizes with photos and prices for the pieces you ask about. Custom sizes are made to your specification.'),
@@ -397,7 +409,7 @@ PAGES.append(dict(
              ('cat-resin-box', 'Checkerboard resin and bone boxes', ''),
              ('cat-servers', 'Horn salad servers', 'With bone inlay handles')],
     faq=faq_common('Where does the bone come from?',
-                   'The bone is a by-product of cattle farming, material that would otherwise go to waste. No animal is harmed for our products.',
+                   'The bone is a by-product of livestock farming, material that would otherwise go to waste. No animal is harmed for our products.',
                    'Yes. Sizes, colours and patterns are made to your specification. Send a drawing, photo or reference piece with the quantity.'),
     next_h='Tell us which bone inlay pieces <em>you need.</em>',
     next_p='Write to us or send a WhatsApp message with the boxes or trays you are interested in, the sizes and colours you want, the quantity per design and your market. We reply with photos and ex-works prices.',
@@ -405,11 +417,11 @@ PAGES.append(dict(
 
 PAGES.append(dict(
     slug='mother-of-pearl', path='/mother-of-pearl/', crumb='Mother-of-pearl',
-    title='Mother of Pearl Tray &amp; Dish Manufacturer, India | Chowringhee Arts',
+    title='Mother of Pearl Tray &amp; Caviar Spoon Manufacturer, India | Chowringhee Arts',
     og_title='Mother-of-pearl trays and dishes — Chowringhee Arts, Kolkata',
-    desc='Carved mother-of-pearl dishes, trays, spoons and salt and pepper sets, handmade in Kolkata for the trade. Birds, flowers, stones and metal trim; custom finishes.',
+    desc='Mother-of-pearl dishes, trays, caviar spoons and salt and pepper sets, carved by hand in Kolkata for the trade. Custom sizes and finishes.',
     og='mother-of-pearl.jpg', og_alt='A mother-of-pearl dish carved as a bird',
-    targets=['mother of pearl tray manufacturer', 'mother of pearl dish wholesale India', 'mother of pearl serveware exporter'],
+    targets=['mother of pearl tray manufacturer', 'mother of pearl caviar spoon manufacturer India', 'mother of pearl dish wholesale India', 'mother of pearl serveware exporter'],
     eyebrow='Mother-of-pearl · for the trade',
     h1='Mother-of-pearl trays and dishes, <em>carved by hand</em>',
     lede='Dishes and trays carved from shell into birds, flowers and fish, some set with stones or trimmed with metal. Made in Kolkata for importers, wholesalers, retail chains and hotel suppliers.',
@@ -420,7 +432,8 @@ PAGES.append(dict(
     make_lede='Mother-of-pearl works for serving dishes, trays and small table pieces. These are the kinds of piece we make.',
     make=[('Dishes', 'Carved as birds and flowers, engraved with fish, set with stones or trimmed with metal.'),
           ('Trays', 'Mother-of-pearl trays for serving and display.'),
-          ('Spoons', 'Mother-of-pearl spoons, such as a spoon with an embossed metal handle. See also our <a href="/seashell/">seashell spoons</a>.'),
+          ('Caviar spoons', 'Small mother-of-pearl spoons for caviar, made to the length and bowl size you need.'),
+          ('Serving spoons', 'Mother-of-pearl spoons, such as a spoon with an embossed metal handle. See also our <a href="/seashell/">seashell spoons</a>.'),
           ('Salt and pepper sets', 'Including a heart-shaped mother-of-pearl salt and pepper set.'),
           ('Pill boxes and small boxes', 'Small boxes and pill boxes in shell.'),
           ('Stools and small furniture', 'Round stools with a mother-of-pearl top, made to order.')],
@@ -448,20 +461,20 @@ PAGES.append(dict(
 
 PAGES.append(dict(
     slug='seashell', path='/seashell/', crumb='Seashell',
-    title='Seashell Caviar Spoons &amp; Shell Tableware Supplier | Chowringhee Arts',
+    title='Seashell Spoons, Napkin Rings &amp; Tableware Supplier | Chowringhee Arts',
     og_title='Seashell spoons and table pieces — Chowringhee Arts, Kolkata',
-    desc='Shell spoons, caviar and serving spoons, napkin rings, salt and pepper sets and desk pieces, handmade in Kolkata. Trade only; custom sizes and finishes.',
+    desc='Shell serving spoons, napkin rings, salt and pepper sets and desk pieces, handmade in Kolkata for importers and retailers. Custom sizes and finishes.',
     og='seashell.jpg', og_alt='A mother-of-pearl spoon with an embossed metal handle',
-    targets=['seashell caviar spoons supplier', 'shell napkin rings wholesale', 'shell tableware supplier India'],
+    targets=['seashell spoons supplier', 'shell napkin rings wholesale', 'shell tableware supplier India'],
     eyebrow='Seashell · for the trade',
     h1='Seashell spoons and table pieces, <em>made by hand</em>',
     lede='Spoons, napkin rings, salt and pepper sets and desk pieces made with shell. Made in Kolkata for importers, wholesalers, retail chains, hotel suppliers and buying agents.',
     hero_img='mop-spoon-diag', hero_alt='Mother-of-pearl spoon — Embossed metal handle',
-    hero_cap='Shell spoon with an embossed metal handle',
+    hero_cap='Mother-of-pearl spoon with an embossed metal handle',
     hero_facts=['Handmade', 'Custom sizes', 'Samples on request', 'Ready 30–45 days'],
     mail_subject='Seashell enquiry', wa_text='Hello Chowringhee Arts, I am interested in your seashell pieces.',
     make_lede='Shell is cut, carved or inlaid. These are the kinds of piece we make with it.',
-    make=[('Spoons', 'Shell spoons for serving, and small spoons for caviar, made to the size you need. The spoon shown has an embossed metal handle.'),
+    make=[('Spoons', 'Shell spoons for serving, and small spoons for caviar, made to the size you need. The spoon shown has an embossed metal handle. See also our <a href="/mother-of-pearl/">mother-of-pearl caviar spoons</a>.'),
           ('Napkin rings', 'Shell napkin rings, such as a ring with a rope loop.'),
           ('Salt and pepper sets', 'Including a heart-shaped mother-of-pearl salt and pepper set.'),
           ('Dishes', 'Shell dishes, engraved or set with stones. See our <a href="/mother-of-pearl/">mother-of-pearl dishes and trays</a>.'),
@@ -500,7 +513,7 @@ PAGES.append(dict(
     hero_cap='Checkerboard resin and bone boxes',
     hero_facts=['Handmade', 'Colours to order', 'Samples on request', 'Ready 30–45 days'],
     mail_subject='Resin and terrazzo enquiry', wa_text='Hello Chowringhee Arts, I am interested in your resin and terrazzo pieces.',
-    make_lede='There is only one resin piece on this website so far. Ask us and we will send photos of the resin and terrazzo pieces that suit your range.',
+    make_lede='Resin and terrazzo are the smaller part of our range: boxes, trays and tableware in plain colours and terrazzo mixes. Ask us and we will send photos and sizes of the pieces that suit your range.',
     make=[('Boxes', 'Resin boxes, including checkerboard boxes in resin and bone.'),
           ('Tableware', 'Resin and terrazzo tableware and serveware. Tell us the pieces you need and we send photos of what we make.'),
           ('Coloured resin', 'Resin in the colours you specify.'),
@@ -536,7 +549,7 @@ def material_page(p):
   </section>
   <section class="band" aria-labelledby="gal-title">
     <div class="wrap">
-      <div class="sec-head"><div><p class="eyebrow">Gallery</p><h2 id="gal-title">From our <em>{p["crumb"].lower() if p["slug"] != "mother-of-pearl" else "mother-of-pearl"} range.</em></h2></div><p class="lede">Real pieces, photographed by us. Ask for sizes and ex-works prices on anything you see.</p></div>
+      <div class="sec-head"><div><p class="eyebrow">Gallery</p><h2 id="gal-title">From our <em>{p["crumb"].lower() if p["slug"] != "mother-of-pearl" else "mother-of-pearl"} range.</em></h2></div><p class="lede">Real pieces from our range. Ask for sizes and ex-works prices on anything you see.</p></div>
       {gallery(p["gallery"])}
       {f'<p class="note">{p["gallery_note"]}</p>' if p.get("gallery_note") else ''}
     </div>
@@ -571,7 +584,7 @@ TRADE = dict(
     mail_subject='Trade enquiry', wa_text='Hello Chowringhee Arts, I would like to discuss a trade order.',
     faq=[(q, e(a), a) for q, a in [
         ('Do you sell to consumers?', 'No. We sell to the trade only: importers, wholesalers, retail chains, hotel suppliers and buying agents.'),
-        ('Do you send a price list or catalogue?', 'No. We do not publish prices or send full catalogues. Tell us the pieces you are interested in and we send photos, sizes and ex-works Kolkata prices for those.'),
+        ('Do you send a price list or catalogue?', 'No. We quote for the pieces you ask about rather than sending a full catalogue. Tell us the pieces you are interested in and we send photos, sizes and ex-works Kolkata prices for those.'),
         ('Is there a minimum order quantity?', 'Prices get better from 100 pieces and again from 300 pieces per design. Tell us the quantities you have in mind and we will quote for those.'),
         ('Can I order samples?', 'Yes. Samples are made on request and charged at the piece price.'),
         ('What are the payment terms?', '50% advance with the order, and the balance before dispatch.'),
@@ -598,7 +611,7 @@ def trade_page(p):
             ('Custom work', 'Sizes, colours and finishes to your specification'),
             ('Payment', '50% advance, balance before dispatch'),
             ('Lead time', 'Ready 30 to 45 days after the advance'),
-            ('Membership', 'Member of EPCH, the Export Promotion Council for Handicrafts')]
+            ('Membership', 'Member of EPCH, the Export Promotion Council for Handicrafts (registration no. 44785)'), ('Registrations', 'IEC and GSTIN on request')]
     body = [head(p), header(p), '<main id="main">\n', sub_hero(p, photo=True)]
     body.append(f'''  <section class="buyers on-navy" aria-labelledby="steps-title">
     <div class="wrap">
@@ -676,12 +689,12 @@ def about_page(p):
   <section class="band card" aria-labelledby="mat-title">
     <div class="wrap split">
       <div class="prose"><p class="eyebrow">Our materials</p><h2 id="mat-title">Horn and bone that would <em>otherwise go to waste.</em></h2>
-        <p>Our buffalo horn and bone are <strong>by-products of cattle farming</strong>. No animal is harmed for our products.</p>
+        <p>Our buffalo horn and bone are <strong>by-products of livestock farming</strong>. No animal is harmed for our products.</p>
         <p>We use real buffalo horn, never faux. Every horn piece has its own grain, and every shell its own shimmer.</p>
         <p>We also work in mother-of-pearl, seashell and resin, and finish many pieces with brass details.</p>
       </div>
       <div class="prose"><p class="eyebrow">Membership and fairs</p><h2 id="fair-title">EPCH member, <em>IHGF exhibitor.</em></h2>
-        <p>We are a member of EPCH, the Export Promotion Council for Handicrafts, and exhibit at IHGF Delhi Fair.</p>
+        <p>Chowringhee Arts is run by its proprietor, Siddhant Chandan. We are a member of EPCH, the Export Promotion Council for Handicrafts (registration no. 44785), and exhibit at IHGF Delhi Fair; our stand for Spring 2027 is booked.</p>
         <ul class="past-list" aria-label="IHGF Delhi Fair editions">
           <li class="next"><b>Spring 2027 · 15–19 March 2027</b>India Expo Centre and Mart, Greater Noida</li>
           <li><b>Autumn 2026</b>Hall 3, Stand E-06/05</li>
